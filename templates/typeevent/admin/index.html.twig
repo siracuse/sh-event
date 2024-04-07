@@ -3,7 +3,7 @@
 
 {% block body %}
     <h1>Les types d'événements</h1>
-    <p><a href="{{ path('admin.event.new') }}">Ajouter</a></p>
+    <p><a href="{{ path('admin.typeevent.new') }}">Ajouter</a></p>
     {% for type_event in type_events %}
         <p>
             {{ type_event.name }}
