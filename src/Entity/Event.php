@@ -5,8 +5,12 @@ namespace App\Entity;
 use App\Repository\EventRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
+#[Vich\Uploadable]
 class Event
 {
     #[ORM\Id]
@@ -29,8 +33,21 @@ class Event
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+//    propriété correspondant au nom de l'image
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
+//    propriété correspondant a la data de l'image
+    #[Vich\UploadableField(mapping: 'events', fileNameProperty: 'picture')]
+    #[Assert\Image()]
+    private ?File $imageFile = null;
+
+//    propriete permettant de soumettre une image si aucun autre champ n'est renseigné, lors d'une édition par exemple
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeEvent $type_event = null;
 
     public function getId(): ?int
     {
@@ -108,4 +125,33 @@ class Event
 
         return $this;
     }
+
+    public function getTypeEvent(): ?TypeEvent
+    {
+        return $this->type_event;
+    }
+
+    public function setTypeEvent(?TypeEvent $type_event): static
+    {
+        $this->type_event = $type_event;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile): static
+    {
+        $this->imageFile = $imageFile;
+
+        if(null != $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
 }
