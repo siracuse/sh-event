@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<h1>Les événements</h1>
+
+    {% for event in events %}
+        <p>
+            {{ event.title }}
+            <a href="{{ path('event', {id : event.id}) }}">Voir plus</a>
+        </p>
+    {% endfor %}
+{% endblock %}

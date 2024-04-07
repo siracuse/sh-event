@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Modification d'un événement</h1>
+    <p><a href="{{ path('admin.event.index') }}">Retour</a></p>
+
+
+    {{ form(form) }}
+{% endblock %}
