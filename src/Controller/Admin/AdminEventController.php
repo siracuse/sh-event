@@ -14,14 +14,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 #[Route('/admin/event', name:'admin.event.')]
-//#[isGranted('ROLE_ADMIN')]
+#[isGranted('ROLE_ADMIN')]
 class AdminEventController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(EventRepository $repository): Response
     {
         $events = $repository->findAll();
-        return $this->render('event/admin/index.html.twig', [
+        return $this->render('back/event/index.html.twig', [
             'events' => $events,
         ]);
     }
@@ -38,7 +38,7 @@ class AdminEventController extends AbstractController
             $this->addFlash('notice', "L'événement a bien été ajoutée");
             return $this->redirectToRoute('admin.event.index');
         }
-        return $this->render('event/admin/new.html.twig', [
+        return $this->render('back/event/new.html.twig', [
             'form' => $form,
         ]);
     }
@@ -53,7 +53,7 @@ class AdminEventController extends AbstractController
             $this->addFlash('notice', "L'événement a bien été modifiée");
             return $this->redirectToRoute('admin.event.index');
         }
-        return $this->render('event/admin/edit.html.twig', [
+        return $this->render('back/event/edit.html.twig', [
             'form' => $form,
             'event' => $event
         ]);

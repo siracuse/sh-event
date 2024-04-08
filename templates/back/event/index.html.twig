@@ -1,0 +1,31 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+    <h1>Les événements</h1>
+    <p><a href="{{ path('admin.event.new') }}">Ajouter</a></p>
+
+    <table id="myTable" class="myTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+    <tbody>
+        {% for event in events %}
+
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>
+                    <a href="{{ path('admin.event.edit', {id:event.id}) }}">Modifier</a>
+                    <a href="{{ path('admin.event.delete', {id:event.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}

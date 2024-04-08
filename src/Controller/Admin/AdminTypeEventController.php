@@ -13,14 +13,14 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin/typeevent', name:'admin.typeevent.')]
-//#[isGranted('ROLE_ADMIN')]
+#[isGranted('ROLE_ADMIN')]
 class AdminTypeEventController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(TypeEventRepository $repository): Response
     {
         $typeEvents = $repository->findAll();
-        return $this->render('typeevent/admin/index.html.twig', [
+        return $this->render('back/typeevent/index.html.twig', [
             'type_events' => $typeEvents,
         ]);
     }
@@ -37,7 +37,7 @@ class AdminTypeEventController extends AbstractController
             $this->addFlash('notice', "Le type d'événement a bien été ajouté");
             return $this->redirectToRoute('admin.typeevent.index');
         }
-        return $this->render('typeevent/admin/new.html.twig', [
+        return $this->render('back/typeevent/new.html.twig', [
             'form' => $form,
         ]);
     }
@@ -52,7 +52,7 @@ class AdminTypeEventController extends AbstractController
             $this->addFlash('notice', "Le type d'événement a bien été modifié");
             return $this->redirectToRoute('admin.typeevent.index');
         }
-        return $this->render('typeevent/admin/edit.html.twig', [
+        return $this->render('back/typeevent/edit.html.twig', [
             'form' => $form,
             'typeevent' => $typeEvent
         ]);

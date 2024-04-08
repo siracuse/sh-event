@@ -1,14 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 
 {% block body %}
     <h1>Les types d'événements</h1>
     <p><a href="{{ path('admin.typeevent.new') }}">Ajouter</a></p>
+
+
+    <table id="myTable" class="myTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
     {% for type_event in type_events %}
-        <p>
-            {{ type_event.name }}
+
+        <tr>
+            <td>{{ type_event.name }}</td>
+            <td>
             <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}">Modifier</a>
             <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}">Supprimer</a>
-        </p>
+            </td>
+        </tr>
     {% endfor %}
+        </tbody>
+
+    </table>
 {% endblock %}

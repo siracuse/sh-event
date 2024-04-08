@@ -3,7 +3,7 @@
 
 {% block body %}
 <h1>Les événements</h1>
-
+    <a href="{{ path('app_login') }}">connexion</a>
     {% for event in events %}
         <p>
             {{ event.title }}

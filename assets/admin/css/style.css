@@ -1,0 +1,45 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+aside {
+    color: white;
+    background: #272c33;
+    height: 100vh;
+    min-height: 100%;
+    padding: 0 25px;
+    width: 280px;
+}
+aside nav {
+    margin-top: 100px;
+}
+aside ul {
+    list-style: none;
+}
+aside li {
+    margin-bottom: 20px;
+}
+aside a {
+    color: #eee;
+    padding: 0.5rem 1.5rem;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+section {
+    margin-left: 100px;
+}
+
+section #myTable {
+    width: 100% !important;
+}
