@@ -1,3 +1,45 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
-    background-color: skyblue;
+    margin: 0;
+    padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+/*NAVBAR*/
+nav {
+    /*display: flex;*/
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: end;
+}
+nav ul li {
+    margin-right: 20px;
+}
+
+
+.event-grid {
+    margin-bottom: 20px;
+    border-top: 1px solid darkgrey;
+    padding-top: 10px;
+    max-width: 650px;
+}
+.event-grid div {
+    margin-left: 10px;
+}
+.event-grid a{
+    display: flex;
+}
+
+.event-grid img {
+    width: 200px;
+}
+
+.event img {
+    max-width: 300px;
 }

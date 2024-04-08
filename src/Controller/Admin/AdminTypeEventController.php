@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/typeevent', name:'admin.typeevent.')]
+#[Route('/admin/typeevent', name: 'admin.typeevent.')]
 #[isGranted('ROLE_ADMIN')]
 class AdminTypeEventController extends AbstractController
 {

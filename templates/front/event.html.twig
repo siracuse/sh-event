@@ -1,11 +1,14 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Hello EventController!{% endblock %}
 
 {% block body %}
+<div class="event">
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }} - {{ event.location | capitalize }}</p>
+    <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
+    <p>{{ event.description }}</p>
+    <a href="{{ path('index') }}"><-- Retour accueil</a>
+</div>
 
-{{ event.title }}<br><br>
-{{ event.description }}<br><br><br>
-
-    <a href="{{ path('index') }}">Retour accueil</a>
 {% endblock %}

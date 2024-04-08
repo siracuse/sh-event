@@ -17,17 +17,7 @@ class EventController extends AbstractController
     public function index(EventRepository $repository, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
     {
         $events = $repository->findAll();
-
-//        $user = new User();
-//        $user->setEmail('siracuse.harichandra@gmail.com')
-//            ->setName('Harichandra')
-//            ->setFirstname('SIRACUSE')
-//            ->setPassword($hasher->hashPassword($user, 'azed'))
-//            ->setRoles(['ROLE_ADMIN']);
-//
-//        $em->persist($user);
-//        $em->flush();
-        return $this->render('index.html.twig', [
+        return $this->render('front/index.html.twig', [
             'events' => $events,
         ]);
     }
@@ -36,7 +26,7 @@ class EventController extends AbstractController
     #[Route('/event/{id}', name: 'event')]
     public function event(Event $event): Response
     {
-        return $this->render('event/index.html.twig', [
+        return $this->render('front/event.html.twig', [
             'event' => $event,
         ]);
     }

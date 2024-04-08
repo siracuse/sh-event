@@ -16,16 +16,16 @@
 
         <tbody>
 
-    {% for type_event in type_events %}
+        {% for type_event in type_events %}
 
-        <tr>
-            <td>{{ type_event.name }}</td>
-            <td>
-            <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}">Modifier</a>
-            <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}">Supprimer</a>
-            </td>
-        </tr>
-    {% endfor %}
+            <tr>
+                <td>{{ type_event.name }}</td>
+                <td>
+                    <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}">Modifier</a>
+                    <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
         </tbody>
 
     </table>

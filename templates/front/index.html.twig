@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+
+{% block body %}
+
+
+    <h1>Les événements</h1>
+
+    <div class="events-grid">
+        {% for event in events %}
+            <div class="event-grid">
+                <a href="{{ path('event', {id : event.id}) }}">
+                    <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
+                    <div>
+                        <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }}</p>
+                        <p>{{ event.title }}</p>
+                        <p>{{ event.typeevent.name }}</p>
+                        <p>{{ event.description | striptags|slice(0, 40) ~ '...' }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
