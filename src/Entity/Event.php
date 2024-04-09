@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -48,6 +50,17 @@ class Event
     #[ORM\ManyToOne(inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
     private ?TypeEvent $type_event = null;
+
+    /**
+     * @var Collection<int, TakePart>
+     */
+    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event')]
+    private Collection $takeParts;
+
+    public function __construct()
+    {
+        $this->takeParts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +162,36 @@ class Event
 
         if(null != $imageFile) {
             $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TakePart>
+     */
+    public function getTakeParts(): Collection
+    {
+        return $this->takeParts;
+    }
+
+    public function addTakePart(TakePart $takePart): static
+    {
+        if (!$this->takeParts->contains($takePart)) {
+            $this->takeParts->add($takePart);
+            $takePart->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTakePart(TakePart $takePart): static
+    {
+        if ($this->takeParts->removeElement($takePart)) {
+            // set the owning side to null (unless already changed)
+            if ($takePart->getEvent() === $this) {
+                $takePart->setEvent(null);
+            }
         }
 
         return $this;

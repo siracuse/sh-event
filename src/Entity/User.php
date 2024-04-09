@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    /**
+     * @var Collection<int, TakePart>
+     */
+    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'user')]
+    private Collection $takeParts;
+
+    public function __construct()
+    {
+        $this->takeParts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +162,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TakePart>
+     */
+    public function getTakeParts(): Collection
+    {
+        return $this->takeParts;
+    }
+
+    public function addTakePart(TakePart $takePart): static
+    {
+        if (!$this->takeParts->contains($takePart)) {
+            $this->takeParts->add($takePart);
+            $takePart->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTakePart(TakePart $takePart): static
+    {
+        if ($this->takeParts->removeElement($takePart)) {
+            // set the owning side to null (unless already changed)
+            if ($takePart->getUser() === $this) {
+                $takePart->setUser(null);
+            }
+        }
 
         return $this;
     }

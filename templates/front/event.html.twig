@@ -5,10 +5,22 @@
 {% block body %}
 <div class="event">
     <h2>{{ event.title }}</h2>
-    <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }} - {{ event.location | capitalize }}</p>
-    <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
-    <p>{{ event.description }}</p>
-    <a href="{{ path('index') }}"><-- Retour accueil</a>
+
+    <div class="event-content">
+        <div class="event-content-right">
+            <p>{{ event.date | date('l j F Y') }} <br>{{ event.time | date('H:i') }}</p>
+            <p>{{ event.location | capitalize }}</p>
+        </div>
+
+        <div class="event-content-left">
+            <div>
+                <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
+            </div>
+            <h2>Description</h2>
+            <p class="mg-bot-40">{{ event.description }}</p>
+            <a href="{{ path('event.register', {id: event.id}) }}" class="button1">Participer</a>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

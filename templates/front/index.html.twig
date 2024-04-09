@@ -8,22 +8,47 @@
 {% block body %}
 
 
-    <h1>Les événements</h1>
 
-    <div class="events-grid">
-        {% for event in events %}
-            <div class="event-grid">
-                <a href="{{ path('event', {id : event.id}) }}">
-                    <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
-                    <div>
-                        <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }}</p>
-                        <p>{{ event.title }}</p>
-                        <p>{{ event.typeevent.name }}</p>
-                        <p>{{ event.description | striptags|slice(0, 40) ~ '...' }}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+
+    <div class="homepage">
+        <div>
+            <h1>La plate-forme des relations humaines : l'endroit où les centres d'intérêt donnent naissance à des
+                amitiés</h1>
+            <p>
+                Quel que soit votre centre d'intérêt, de la randonnée à la lecture en passant par le réseautage et le
+                partage de
+                compétences, il y a des milliers de personnes qui le partagent sur Meetup. Des événements ont lieu tous les
+                jours : inscrivez-vous pour en profiter.
+            </p>
+            <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH-meetup</a></p>
+        </div>
+        <img src="{{ asset('images/home.png') }}" alt="">
+
+    </div>
+
+
+
+
+    <div class="section-events-grid">
+        <h2>Les événements</h2>
+        <div class="events-grid">
+            {% for event in events %}
+                <div class="event-grid">
+                    <a href="{{ path('event', {id : event.id}) }}">
+                        <div>
+                            <p class="event-grid-title">{{ event.title }}</p>
+                            <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }}</p>
+
+                            {#                        <p>{{ event.typeevent.name }}</p> #}
+                            <p>{{ event.description | striptags|slice(0, 40) ~ '...' }}</p>
+                        </div>
+                        <div class="txt-center">
+                            <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
