@@ -6,7 +6,7 @@
     <p><a href="{{ path('admin.typeevent.new') }}">Ajouter</a></p>
 
 
-    <table id="myTable" class="myTable">
+    <table class="table">
         <thead>
         <tr>
             <th>Name</th>
@@ -20,9 +20,9 @@
 
             <tr>
                 <td>{{ type_event.name }}</td>
-                <td>
-                    <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}">Modifier</a>
-                    <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}">Supprimer</a>
+                <td class="action">
+                    <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}"><img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt=""></a>
+                    <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}"><img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt=""></a>
                 </td>
             </tr>
         {% endfor %}

@@ -5,7 +5,7 @@
     <h1>Les événements</h1>
     <p><a href="{{ path('admin.event.new') }}">Ajouter</a></p>
 
-    <table id="myTable" class="myTable">
+    <table class="table">
         <thead>
         <tr>
             <th>Title</th>
@@ -18,9 +18,14 @@
 
             <tr>
                 <td>{{ event.title }}</td>
-                <td>
-                    <a href="{{ path('admin.event.edit', {id:event.id}) }}">Modifier</a>
-                    <a href="{{ path('admin.event.delete', {id:event.id}) }}">Supprimer</a>
+                <td class="action">
+                    <a href="{{ path('admin.event.edit', {id:event.id}) }}">
+                        <img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt="">
+                    </a>
+                    <a href="{{ path('admin.event.delete', {id:event.id}) }}">
+                        <img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt="">
+                    </a>
+                    
                 </td>
             </tr>
 

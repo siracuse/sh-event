@@ -19,20 +19,31 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, [
+                'label' => 'Titre :'
+            ])
             ->add('typeevent', EntityType::class, [
                 'class' => TypeEvent::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Type de l\'événement'
             ])
             ->add('date', null, [
                 'widget' => 'single_text',
+                'label' => 'Date :'
             ])
             ->add('time', null, [
                 'widget' => 'single_text',
+                'label' => 'L\'heure'
             ])
-            ->add('location')
-            ->add('description', TextareaType::class)
-            ->add('imageFile', FileType::class)
+            ->add('location',TextType::class, [
+                'label' => 'Lieu :'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description : '
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' => 'L\'image'
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider'
             ])

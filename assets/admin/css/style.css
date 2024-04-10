@@ -5,6 +5,9 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+a {
+    text-decoration: none;
+}
 
 
 aside {
@@ -12,8 +15,8 @@ aside {
     background: #272c33;
     height: 100vh;
     min-height: 100%;
-    padding: 0 25px;
-    width: 280px;
+    padding: 0 15px;
+    width: 210px;
 }
 
 aside nav {
@@ -22,6 +25,7 @@ aside nav {
 
 aside ul {
     list-style: none;
+    padding: 0;
 }
 
 aside li {
@@ -31,15 +35,46 @@ aside li {
 aside a {
     color: #eee;
     padding: 0.5rem 1.5rem;
-    font-size: 18px;
+    font-size: 14px;
     text-decoration: none;
 }
 
 
 section {
-    margin-left: 100px;
+    padding-left: 50px;
+    margin-top: 50px;
 }
 
-section #myTable {
-    width: 100% !important;
+
+section .table img {
+    width: 24px;
+    margin-right: 12px;
+}
+
+.action {
+    display: flex;
+    justify-content: end;
+    width: auto;
+
+}
+
+
+
+@media all and (min-width: 1000px) {
+
+    aside {
+        width: 250px;
+    }
+
+    aside a {
+        font-size: 18px;
+    }
+
+    section {
+        width: 600px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+
 }
