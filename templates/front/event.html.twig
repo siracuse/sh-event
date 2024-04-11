@@ -12,6 +12,11 @@
         <div class="event-content-right">
             <p>{{ event.date | date('l j F Y') }} <br>{{ event.time | date('H:i') }}</p>
             <p>{{ event.location | capitalize }}</p>
+            {% if getAllUserByEvent == 1 %}
+                <p>Participant : {{ getAllUserByEvent }}</p>
+            {% else %}
+                <p>Participants : {{ getAllUserByEvent }}</p>
+            {% endif %}
         </div>
 
         <div class="event-content-left">

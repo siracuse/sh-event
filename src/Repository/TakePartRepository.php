@@ -66,4 +66,15 @@ class TakePartRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getAllUserByEvent($eventId)
+    {
+        return $this->createQueryBuilder('t1')
+            ->select('u1.id')
+            ->innerJoin('t1.user', 'u1')
+            ->andWhere('t1.event = :eventId')
+            ->setParameter('eventId', $eventId)
+            ->getQuery()
+            ->getResult();
+    }
 }

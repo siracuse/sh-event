@@ -28,10 +28,10 @@ class EventController extends AbstractController
     #[Route('/event/{id}', name: 'event')]
     public function event(Event $event, TakePartRepository $repository): Response
     {
-
         $isAlreadyTakePart = false;
-
         $user = $this->getUser();
+        $getAllUserByEvent = $repository->getAllUserByEvent($event->getId());
+//        dd(count($getAllUserByEvent));
         if ($user) {
             $allEventIdByUser = $repository->getAllEventIdByUser($user->getId());
             foreach ($allEventIdByUser as $result) {
@@ -40,11 +40,10 @@ class EventController extends AbstractController
                 }
             }
         }
-
-
         return $this->render('front/event.html.twig', [
             'event' => $event,
-            'isAlreadyTakePart' => $isAlreadyTakePart
+            'isAlreadyTakePart' => $isAlreadyTakePart,
+            'getAllUserByEvent' => count($getAllUserByEvent)
         ]);
     }
 
