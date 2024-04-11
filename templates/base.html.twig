@@ -20,7 +20,7 @@
     <nav>
         <ul>
             {% if app.user %}
-                <li><a href="{{ path('event.user.list') }}">Vos événements </a></li>
+                <li><a href="{{ path('event.participation.list') }}">Vos événements </a></li>
                 <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Se connecter</a></li>

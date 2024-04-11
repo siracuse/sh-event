@@ -7,6 +7,7 @@ use App\Entity\TakePart;
 use App\Repository\TakePartRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -15,29 +16,45 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class RegisterEventController extends AbstractController
 {
 
-    #[Route('/register/event/{id}', name: 'event.register')]
-    public function index(Event $event, EntityManagerInterface $em): Response
+    #[Route('/register/event/{id}', name: 'event.participation.register')]
+    public function registerParticiationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
     {
+        $user = $this->getUser();
+        $take_part = $repository->findOneBy(['user' => $user->getId(), 'event' => $event->getId()]);
 
-        $take_part = new TakePart();
-        $take_part->setEvent($event);
-        $take_part->setUser($this->getUser());
-        $take_part->setRegistrationStatus('valider');
-        $em->persist($take_part);
-        $em->flush();
+        if(!$take_part) {
+            $newTake_part = new TakePart();
+            $newTake_part->setEvent($event);
+            $newTake_part->setUser($user);
+            $newTake_part->setRegistrationStatus('valider');
+            $em->persist($newTake_part);
+            $em->flush();
+            return $this->redirectToRoute('event', ['id' => $event->getId()]);
+        } else {
+            return $this->redirectToRoute('event.participation.list');
+        }
 
-//        return $this->render('register_event/index.html.twig', [
-//            'controller_name' => 'RegisterEventController',
-//        ]);
-        return $this->redirectToRoute('index');
     }
 
-    #[Route('/myevents', name: 'event.user.list')]
+
+    #[Route('/event/remove_participation_event/{id}', name: 'event.participation.remove')]
+    public function removeParticipationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
+    {
+        $user = $this->getUser();
+        $take_part = $repository->findOneBy(['user' => $user->getId(), 'event' => $event->getId()]);
+
+        $em->remove($take_part);
+        $em->flush();
+
+        return $this->redirectToRoute('event', ['id' => $event->getId()]);
+    }
+
+
+    #[Route('/myevents', name: 'event.participation.list')]
     public function myEvents(TakePartRepository $repository): Response
     {
         $user = $this->getUser();
         $allEvents = $repository->getAllEventByUser($user->getId(), );
-//        dd($allEvents);
 
         return $this->render('front/myevents.html.twig', [
             'allEvents' => $allEvents

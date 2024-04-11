@@ -6,6 +6,8 @@
 <div class="event">
     <h2>{{ event.title }}</h2>
 
+{#    {{ dump(isAlreadyTakePart) }}#}
+
     <div class="event-content">
         <div class="event-content-right">
             <p>{{ event.date | date('l j F Y') }} <br>{{ event.time | date('H:i') }}</p>
@@ -18,7 +20,13 @@
             </div>
             <h2>Description</h2>
             <p class="mg-bot-40">{{ event.description }}</p>
-            <a href="{{ path('event.register', {id: event.id}) }}" class="button1">Participer</a>
+
+            {% if isAlreadyTakePart %}
+                <a href="{{ path('event.participation.remove', {id: event.id}) }}" class="button1">Je me désinscris</a>
+            {% else %}
+                <a href="{{ path('event.participation.register', {id: event.id}) }}" class="button1">Participer</a>
+            {% endif %}
+
         </div>
     </div>
 </div>
