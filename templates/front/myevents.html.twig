@@ -3,11 +3,32 @@
 
 {% block body %}
 
-    <h1>Mes événements</h1>
 
-    {% for event in allEvents %}
-        {{ event.event.title }}
-    {% endfor %}
+    <div class="event">
+        <h2>Mes événements</h2>
 
+        <div class="event-content">
+            <div class="event-content-right event-by-user-right">
+                <p><a href="{{ path('event.participation.list') }}">Mes participations</a></p>
+                <p><a href="{{ path('new.event') }}">Créer un événement</a></p>
+            </div>
+
+            <div class="event-content-left event-by-user-left">
+                {% for event in allEvents %}
+                    <div class="mg-bot-80 event-by-user-left-content">
+                        <div>
+                            <img src="{{ asset('images/events/' ~ event.event.picture) }}" alt="">
+                        </div>
+                        <div>
+{#                            <p>{{ event.event.date }} {{ event.event.time }}</p>#}
+                            <p class="event-by-user-datetime">{{ event.event.date | date('l j F Y') }} {{ event.event.time | date('H:i') }}</p>
+                            <p class="event-by-user-title">{{ event.event.title }}</p>
+                            <p class="event-by-user-description">{{ event.event.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

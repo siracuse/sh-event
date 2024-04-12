@@ -17,6 +17,10 @@ a {
 .mg-bot-40 {
     margin-bottom: 40px;
 }
+
+.mg-bot-80 {
+    margin-bottom: 80px;
+}
 .txt-center {
     text-align: center;
 }
@@ -102,8 +106,6 @@ nav ul li {
 
 /*LOGIN*/
 .form-login {
-    /*margin: 0 auto;*/
-    /*text-align: center;*/
     width: 400px;
     margin: 0 auto;
 }
@@ -129,6 +131,27 @@ form .login-button {
     cursor: pointer;
 }
 
+
+/*EVENT LIST BY USER*/
+.event-by-user-right {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.event-by-user-left {
+    text-align: center;
+}
+.event-by-user-datetime {
+    color: darkgrey;
+}
+.event-by-user-title {
+    font-weight: bold;
+}
+.event-by-user-description {
+    display: none;
+}
 
 
 @media all and (min-width: 600px) {
@@ -184,6 +207,32 @@ form .login-button {
     .event-content-right {
         width: 350px;
     }
+
+    .event-by-user-right {
+        flex-direction: column;
+        justify-content: start;
+    }
+
+    .event-by-user-left {
+        text-align: left;
+    }
+    .event-by-user-left-content {
+        display: flex;
+    }
+
+    .event-by-user-left-content img {
+        width: 100px;
+        margin-right: 40px;
+    }
+
+    .event-by-user-left-content p {
+        margin: 0;
+
+    }
+    .event-by-user-description {
+        display: flex;
+    }
+
 }
 
 @media all and (min-width: 1200px) {

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Event;
 use App\Entity\TypeEvent;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -44,6 +45,11 @@ class EventType extends AbstractType
             ->add('imageFile', FileType::class, [
                 'label' => 'L\'image'
             ])
+//            ->add('organiser', EntityType::class, [
+//                'class' => User::class,
+//                'choice_label' => 'name',
+//                'label' => 'Type de l\'événement'
+//            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider'
             ])

@@ -57,6 +57,10 @@ class Event
     #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event')]
     private Collection $takeParts;
 
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?user $organiser = null;
+
     public function __construct()
     {
         $this->takeParts = new ArrayCollection();
@@ -193,6 +197,18 @@ class Event
                 $takePart->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOrganiser(): ?user
+    {
+        return $this->organiser;
+    }
+
+    public function setOrganiser(?user $organiser): static
+    {
+        $this->organiser = $organiser;
 
         return $this;
     }

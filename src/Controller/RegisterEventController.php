@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Entity\TakePart;
+use App\Form\EventType;
 use App\Repository\TakePartRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -50,13 +52,34 @@ class RegisterEventController extends AbstractController
 
 
     #[Route('/myevents', name: 'event.participation.list')]
-    public function myEvents(TakePartRepository $repository): Response
+    public function myEvents(TakePartRepository $repository ): Response
     {
         $user = $this->getUser();
-        $allEvents = $repository->getAllEventByUser($user->getId(), );
+        $allEvents = $repository->getAllEventByUser($user->getId());
+
+//        $getAllUserByEvent = $repository->getAllUserByEvent($event->getId());
 
         return $this->render('front/myevents.html.twig', [
             'allEvents' => $allEvents
+        ]);
+    }
+
+    #[Route('/new/event', name: 'new.event')]
+    public function new(Request $request, EntityManagerInterface $em): Response
+    {
+        $event = new Event();
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $event->setOrganiser($user);
+            $em->persist($event);
+            $em->flush();
+            $this->addFlash('notice', "L'événement a bien été ajoutée");
+            return $this->redirectToRoute('event.participation.list');
+        }
+        return $this->render('front/new.html.twig', [
+            'form' => $form,
         ]);
     }
 }
