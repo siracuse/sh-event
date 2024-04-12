@@ -8,7 +8,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Title</th>
+            <th>Titre</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -18,6 +19,7 @@
 
             <tr>
                 <td>{{ event.title }}</td>
+                <td>{{ event.date |  date('d.m.Y') }}</td>
                 <td class="action">
                     <a href="{{ path('admin.event.edit', {id:event.id}) }}">
                         <img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt="">

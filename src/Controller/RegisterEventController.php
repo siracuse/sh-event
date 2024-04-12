@@ -73,6 +73,7 @@ class RegisterEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $event->setOrganiser($user);
+            $event->setStatus('waiting');
             $em->persist($event);
             $em->flush();
             $this->addFlash('notice', "L'événement a bien été ajoutée");

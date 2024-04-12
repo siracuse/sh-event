@@ -22,7 +22,10 @@
     <nav>
         <ul>
             <li><a href="{{ path('admin.index') }}">Accueil</a></li>
-            <li><a href="{{ path('admin.event.index') }}">Événement</a></li>
+            <li><a href="{{ path('admin.event.index') }}">Tous les événement</a></li>
+            <li><a href="{{ path('admin.event.valid.index') }}">Événement validé</a></li>
+            <li><a href="{{ path('admin.event.refuse.index') }}">Événement refusé</a></li>
+            <li><a href="{{ path('admin.event.waiting.index') }}">Événement en attente</a></li>
             <li><a href="{{ path('admin.typeevent.index') }}">Type d'événement</a></li>
             <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
         </ul>
