@@ -17,7 +17,6 @@ a {
 .mg-bot-40 {
     margin-bottom: 40px;
 }
-
 .mg-bot-80 {
     margin-bottom: 80px;
 }
@@ -125,12 +124,64 @@ nav ul li {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     margin-bottom: 28px;
 }
-form .login-button {
-    margin-top: 30px;
-    width: inherit ;
-    cursor: pointer;
+
+.form-control select {
+    display: inline-block;
+    width: 100%;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 8px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-bottom: 28px;
+    height: calc(2.875rem + 2px);
+    font-size: 115%;
+}
+.form-control textarea {
+    margin-bottom: 28px;
+    height: 100px;
 }
 
+/*DESIGN CSS FILE INPUT */
+
+/*.form-control-file {*/
+/*    margin-bottom: 28px;*/
+/*}*/
+
+
+/*.form-control-file input[type="file"] {*/
+/*    display: none;*/
+/*}*/
+
+/*.form-control-file label::after {*/
+/*    content: 'Choisir un fichier';*/
+/*    display: inline-block;*/
+/*    padding: 8px 16px;*/
+/*    cursor: pointer;*/
+/*    border: 2px solid #FFBB00;*/
+/*    color: #FFBB00;*/
+/*    border-radius: 4px;*/
+/*    transition: background-color 0.3s ease;*/
+/*    margin-left: 20px;*/
+/*}*/
+
+/*.form-control-file label:hover::after {*/
+/*    background-color: #FFBB00;*/
+/*    color: #fff;*/
+/*}*/
+
+
+form .login-button {
+    margin-top: 30px;
+    width: 100% ;
+    cursor: pointer;
+}
 
 /*EVENT LIST BY USER*/
 .event-by-user-right {
