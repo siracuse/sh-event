@@ -111,9 +111,6 @@ class AdminEventController extends AbstractController
     }
 
 
-
-
-
     //  TO CHANGE STATUS EVENT
     #[Route('/waiting/valid/{id}', name: 'waiting.valid')]
     public function waitingValid(Event $event, EntityManagerInterface $em): Response

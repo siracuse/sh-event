@@ -4,4 +4,54 @@
 {% block body %}
     <h1>Espace administrateur</h1>
 
+
+
+    <div class="widget-grid">
+        <div class="card widget bg-1">
+            <div class="card-body">
+                <div class="widget-icon">
+                    <a href="{{ path('admin.event.new') }}"><i class="fa fa-add"></i></a>
+                    <i class="fa fa-users"></i>
+                </div>
+
+                <div class="widget-title">
+                    <span class="count">4</span>
+                </div>
+                <small class="widget-desc">Événements</small>
+                <div class="progress progress-xs mt-3 mb-0 bg-light"></div>
+            </div>
+        </div>
+
+        <div class="card widget bg-4">
+            <div class="card-body">
+                <div class="widget-icon">
+                    <a href="{{ path('admin.event.new') }}"><i class="fa fa-add"></i></a>
+                    <i class="fa fa-users"></i>
+                </div>
+
+                <div class="widget-title">
+                    <span class="count">4</span>
+                </div>
+                <small class="widget-desc">Événements en attente</small>
+                <div class="progress progress-xs mt-3 mb-0 bg-light"></div>
+            </div>
+        </div>
+
+        <div class="card widget bg-3">
+            <div class="card-body">
+                <div class="widget-icon">
+                    <a href="{{ path('admin.event.waiting.index') }}"><i class="fa fa-add"></i></a>
+                    <i class="fa fa-users"></i>
+                </div>
+
+                <div class="widget-title">
+                    <span class="count">4</span>
+                </div>
+                <small class="widget-desc">Utilisateurs</small>
+                <div class="progress progress-xs mt-3 mb-0 bg-light"></div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
