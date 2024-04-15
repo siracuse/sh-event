@@ -2,20 +2,28 @@
 
 
 {% block body %}
-{#<div class="container">#}
-{#    <div class="row">#}
-        <h1>Ajout d'un événement</h1>
-        <p><a href="{{ path('admin.event.index') }}">Retour</a></p>
 
-        <div class="form-group">
+
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Ajout d'un événement</h1>
+        </div>
+        <div class="card-body">
             {{ form_start(form) }}
-
                 {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
-{#            {{ form_errors(form, {'attr': {'class': 'your-class'}}) }}#}
-
+                {{ form_row(form.typeevent, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.date, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.time, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.location, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.imageFile, {'attr': {'class': 'form-control-file mg-bot-80'}}) }}
+                {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
             {{ form_end(form) }}
         </div>
+    </div>
 
-{#    </div>#}
-{#</div>#}
+
+
+
 {% endblock %}

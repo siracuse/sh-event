@@ -3,30 +3,34 @@
 
 {% block body %}
     <h1>Les types d'événements</h1>
-    <p><a href="{{ path('admin.typeevent.new') }}">Ajouter</a></p>
+
+    <div class="card">
+        <div class="card-header">
+            <p><a class="btn btn-primary"  href="{{ path('admin.typeevent.new') }}">Ajouter</a></p>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for type_event in type_events %}
+
+                    <tr>
+                        <td>{{ type_event.name }}</td>
+                        <td class="action">
+                            <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}"><img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt=""></a>
+                            <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}"><img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt=""></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-
-        <tbody>
-
-        {% for type_event in type_events %}
-
-            <tr>
-                <td>{{ type_event.name }}</td>
-                <td class="action">
-                    <a href="{{ path('admin.typeevent.edit', {id:type_event.id}) }}"><img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt=""></a>
-                    <a href="{{ path('admin.typeevent.delete', {id:type_event.id}) }}"><img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt=""></a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-
-    </table>
 {% endblock %}

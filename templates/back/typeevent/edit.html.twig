@@ -2,9 +2,13 @@
 
 
 {% block body %}
-    <h1>Modification du type d'événement : {{ typeevent.name }}</h1>
-    <p><a href="{{ path('admin.typeevent.index') }}">Retour</a></p>
-
-
-    {{ form(form) }}
+    <div class="card">
+        <div class="card-header"> <h1>Modification du type d'événement : {{ typeevent.name }}</h1></div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

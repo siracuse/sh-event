@@ -26,7 +26,7 @@ class EventType extends AbstractType
             ->add('typeevent', EntityType::class, [
                 'class' => TypeEvent::class,
                 'choice_label' => 'name',
-                'label' => 'Type de l\'événement'
+                'label' => 'Type de l\'événement :'
             ])
             ->add('date', null, [
                 'widget' => 'single_text',
@@ -43,7 +43,7 @@ class EventType extends AbstractType
                 'label' => 'Description : '
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'L\'image'
+                'label' => 'L\'image :'
             ])
 //            ->add('organiser', EntityType::class, [
 //                'class' => User::class,

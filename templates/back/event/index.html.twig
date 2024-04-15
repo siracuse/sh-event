@@ -2,37 +2,44 @@
 
 
 {% block body %}
-    <h1>Les événements</h1>
-    <p><a href="{{ path('admin.event.new') }}">Ajouter</a></p>
+    <h1> Les événements</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
 
-        <tbody>
-        {% for event in events %}
+    <div class="card">
+        <div class="card-header">
+            <p><a class="btn btn-primary" href="{{ path('admin.event.new') }}">Ajouter</a></p>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th class="action-menu">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.date |  date('d.m.Y') }}</td>
+                        <td class="action">
+                            <a href="{{ path('admin.event.edit', {id:event.id}) }}">
+                                <img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt="">
+                            </a>
+                            <a href="{{ path('admin.event.delete', {id:event.id}) }}">
+                                <img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-            <tr>
-                <td>{{ event.title }}</td>
-                <td>{{ event.date |  date('d.m.Y') }}</td>
-                <td class="action">
-                    <a href="{{ path('admin.event.edit', {id:event.id}) }}">
-                        <img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt="">
-                    </a>
-                    <a href="{{ path('admin.event.delete', {id:event.id}) }}">
-                        <img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt="">
-                    </a>
-                    
-                </td>
-            </tr>
 
-        {% endfor %}
-        </tbody>
 
-    </table>
+
+
 {% endblock %}
