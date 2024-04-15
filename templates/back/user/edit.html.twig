@@ -1,0 +1,17 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+    <div class="card">
+        <div class="card-header"> <h1>Modification de l'utilisateur : {{ user.name }}</h1></div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.firstname, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.roles, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
