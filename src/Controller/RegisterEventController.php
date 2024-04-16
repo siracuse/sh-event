@@ -76,7 +76,7 @@ class RegisterEventController extends AbstractController
             $event->setStatus('waiting');
             $em->persist($event);
             $em->flush();
-            $this->addFlash('notice', "L'événement a bien été ajoutée");
+            $this->addFlash('success', "L'événement a bien été ajoutée");
             return $this->redirectToRoute('event.participation.list');
         }
         return $this->render('front/new.html.twig', [

@@ -7,6 +7,12 @@
     <div class="event">
         <h2>Mes événements</h2>
 
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" id="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <div class="event-content">
             <div class="event-content-right event-by-user-right">
                 <p><a href="{{ path('event.participation.list') }}">Mes participations</a></p>
@@ -20,7 +26,6 @@
                             <img src="{{ asset('images/events/' ~ event.event.picture) }}" alt="">
                         </div>
                         <div>
-{#                            <p>{{ event.event.date }} {{ event.event.time }}</p>#}
                             <p class="event-by-user-datetime">{{ event.event.date | date('l j F Y') }} {{ event.event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.event.title }}</p>
                             <p class="event-by-user-description">{{ event.event.description }}</p>

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
+use App\Form\EventAdminType;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,14 +40,14 @@ class AdminEventController extends AbstractController
     {
         $user = $this->getUser();
         $event = new Event();
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventAdminType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $event->setStatus('valider');
             $event->setOrganiser($user);
             $em->persist($event);
             $em->flush();
-            $this->addFlash('notice', "L'événement a bien été ajoutée");
+            $this->addFlash('success', "L'événement a bien été ajoutée");
             return $this->redirectToRoute('admin.event.index');
         }
         return $this->render('back/event/new.html.twig', [
@@ -57,11 +58,11 @@ class AdminEventController extends AbstractController
     #[Route('/edit/{id}', name: 'edit')]
     public function edit(Event $event, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventAdminType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            $this->addFlash('notice', "L'événement a bien été modifiée");
+            $this->addFlash('success', "L'événement a bien été modifiée");
             return $this->redirectToRoute('admin.event.index');
         }
         return $this->render('back/event/edit.html.twig', [
@@ -75,7 +76,7 @@ class AdminEventController extends AbstractController
     {
         $em->remove($event);
         $em->flush();
-        $this->addFlash('notice', "L'événement a bien été supprimée");
+        $this->addFlash('success', "L'événement a bien été supprimée");
         return $this->redirectToRoute('admin.event.index');
     }
 

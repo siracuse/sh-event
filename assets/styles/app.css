@@ -40,6 +40,26 @@ a {
 }
 
 
+/* MESSAGE ALERT*/
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    width: 300px;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.hidden {
+    display: none;
+    transition: height 0.5s ease-out;
+    overflow: hidden;
+}
+
 /*HOMEPAGE*/
 .homepage {
     margin-bottom: 50px;

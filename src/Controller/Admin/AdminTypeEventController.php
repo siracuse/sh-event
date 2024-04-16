@@ -34,7 +34,7 @@ class AdminTypeEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($typeEvent);
             $em->flush();
-            $this->addFlash('notice', "Le type d'événement a bien été ajouté");
+            $this->addFlash('success', "Le type d'événement a bien été ajouté");
             return $this->redirectToRoute('admin.typeevent.index');
         }
         return $this->render('back/typeevent/new.html.twig', [
@@ -49,7 +49,7 @@ class AdminTypeEventController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            $this->addFlash('notice', "Le type d'événement a bien été modifié");
+            $this->addFlash('success', "Le type d'événement a bien été modifié");
             return $this->redirectToRoute('admin.typeevent.index');
         }
         return $this->render('back/typeevent/edit.html.twig', [
@@ -63,7 +63,7 @@ class AdminTypeEventController extends AbstractController
     {
         $em->remove($typeEvent);
         $em->flush();
-        $this->addFlash('notice', "Le type d'événement a bien été supprimé");
+        $this->addFlash('success', "Le type d'événement a bien été supprimé");
         return $this->redirectToRoute('admin.typeevent.index');
     }
 }
