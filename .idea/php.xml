@@ -122,7 +122,6 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
