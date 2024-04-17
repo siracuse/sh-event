@@ -14,8 +14,13 @@
                 les
                 jours : inscrivez-vous pour en profiter.
             </p>
-            <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH-meetup</a></p>
+            {% if app.user %}
+                <p class="mg-top-40"><a href="{{ path('event.participation.list') }}" class="button1">Vos événements</a></p>
+            {% else %}
+                <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH-meetup</a></p>
+            {% endif %}
         </div>
+
         <div class="homepage-img">
             <img src="{{ asset('images/meeting.jpg') }}" alt="">
         </div>

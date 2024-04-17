@@ -199,9 +199,41 @@ form .login-button {
     display: none;
 }
 
+footer {
+    margin-top: 200px;
+    min-height: 150px;
+    border-top: 2px solid #dddcd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer img {
+    width: 25px;
+    margin-right: 10px;
+}
+.footer-section {
+    width: 300px;
+    text-align: center;
+    margin: 20px 0;
+}
+footer p {
+    font-weight: 700;
+}
+.footer-section-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-section-account a {
+    margin-bottom: 10px;
+}
 
 @media all and (min-width: 600px) {
-
+    footer {
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+    }
 }
 
 @media all and (min-width: 800px) {
@@ -230,7 +262,10 @@ form .login-button {
 
 
 @media all and (min-width: 1000px) {
-
+    header {
+        width: 900px;
+        margin: 0 auto;
+    }
     .homepage {
         flex-direction: row;
         width: 900px;
@@ -281,10 +316,18 @@ form .login-button {
     .event-by-user-description {
         display: flex;
     }
+    footer {
+        width: 900px;
+        margin: 200px auto 0 auto;
+    }
 
 }
 
 @media all and (min-width: 1200px) {
+    header, footer {
+        width: 1000px;
+    }
+
     .homepage, .section-events-grid {
         width: 1000px;
     }
@@ -298,4 +341,5 @@ form .login-button {
     .event-content-right {
         width: 300px;
     }
+
 }
