@@ -63,10 +63,13 @@ a {
 /*HOMEPAGE*/
 .homepage {
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .homepage img {
-    width: 100%;
+    max-width: 400px;
 }
 
 /*HEADER & NAVBAR*/
@@ -168,34 +171,6 @@ nav ul li {
     height: 100px;
 }
 
-/*DESIGN CSS FILE INPUT */
-
-/*.form-control-file {*/
-/*    margin-bottom: 28px;*/
-/*}*/
-
-
-/*.form-control-file input[type="file"] {*/
-/*    display: none;*/
-/*}*/
-
-/*.form-control-file label::after {*/
-/*    content: 'Choisir un fichier';*/
-/*    display: inline-block;*/
-/*    padding: 8px 16px;*/
-/*    cursor: pointer;*/
-/*    border: 2px solid #FFBB00;*/
-/*    color: #FFBB00;*/
-/*    border-radius: 4px;*/
-/*    transition: background-color 0.3s ease;*/
-/*    margin-left: 20px;*/
-/*}*/
-
-/*.form-control-file label:hover::after {*/
-/*    background-color: #FFBB00;*/
-/*    color: #fff;*/
-/*}*/
-
 
 form .login-button {
     margin-top: 30px;
@@ -230,14 +205,7 @@ form .login-button {
 }
 
 @media all and (min-width: 800px) {
-    .homepage {
-        display: flex;
-        width: 700px;
-        margin: 0 auto;
-    }
-    .homepage img {
-        width: 250px;
-    }
+
     .section-events-grid {
         width: 700px;
         margin: 100px auto 0 auto;
@@ -262,6 +230,16 @@ form .login-button {
 
 
 @media all and (min-width: 1000px) {
+
+    .homepage {
+        flex-direction: row;
+        width: 900px;
+        margin: 0 auto;
+    }
+    .homepage img {
+        width: auto;
+    }
+
     .event .event-content {
         display: flex;
         flex-direction: row-reverse;

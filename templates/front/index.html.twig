@@ -1,13 +1,6 @@
 {% extends 'base.html.twig' %}
 
-
-
-
-
-
 {% block body %}
-
-
 
 
     <div class="homepage">
@@ -17,16 +10,17 @@
             <p>
                 Quel que soit votre centre d'intérêt, de la randonnée à la lecture en passant par le réseautage et le
                 partage de
-                compétences, il y a des milliers de personnes qui le partagent sur Meetup. Des événements ont lieu tous les
+                compétences, il y a des milliers de personnes qui le partagent sur Meetup. Des événements ont lieu tous
+                les
                 jours : inscrivez-vous pour en profiter.
             </p>
             <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH-meetup</a></p>
         </div>
-        <img src="{{ asset('images/home.png') }}" alt="">
+        <div class="homepage-img">
+            <img src="{{ asset('images/meeting.jpg') }}" alt="">
+        </div>
 
     </div>
-
-
 
 
     <div class="section-events-grid">

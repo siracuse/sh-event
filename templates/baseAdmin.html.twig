@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Administrateur{% endblock %}</title>
@@ -32,7 +32,6 @@
             <a class="mg-bot-20" href="{{ path('admin.user.index') }}">Utilisateur</a>
             <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
-
     </nav>
 </aside>
 
@@ -41,6 +40,5 @@
     {% block body %}
     {% endblock %}
 </section>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </body>
 </html>
