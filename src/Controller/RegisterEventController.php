@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Entity\TakePart;
 use App\Form\EventType;
+use App\Repository\EventRepository;
 use App\Repository\TakePartRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +19,7 @@ class RegisterEventController extends AbstractController
 {
 
     #[Route('/register/event/{id}', name: 'event.participation.register')]
-    public function registerParticiationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
+    public function registerParticipationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
     {
         $user = $this->getUser();
         $take_part = $repository->findOneBy(['user' => $user->getId(), 'event' => $event->getId()]);
@@ -34,9 +35,7 @@ class RegisterEventController extends AbstractController
         } else {
             return $this->redirectToRoute('event.participation.list');
         }
-
     }
-
 
     #[Route('/event/remove_participation_event/{id}', name: 'event.participation.remove')]
     public function removeParticipationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
@@ -56,8 +55,6 @@ class RegisterEventController extends AbstractController
     {
         $user = $this->getUser();
         $allEvents = $repository->getAllEventByUser($user->getId());
-
-//        $getAllUserByEvent = $repository->getAllUserByEvent($event->getId());
 
         return $this->render('front/myevents.html.twig', [
             'allEvents' => $allEvents
@@ -83,4 +80,19 @@ class RegisterEventController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/myevents/waiting', name: 'myevent.waiting')]
+    public function myEventWaiting(EventRepository $repository): Response
+    {
+        $user = $this->getUser();
+        $eventsWaiting = $repository->getEventByStatusAndUser('waiting', $user);
+        $eventsRefuse = $repository->getEventByStatusAndUser('refuse', $user);
+
+        return $this->render('front/myeventswaiting.html.twig', [
+            'eventsWaiting' => $eventsWaiting,
+            'eventsRefuse' => $eventsRefuse
+        ]);
+    }
+
+
 }

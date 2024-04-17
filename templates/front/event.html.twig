@@ -8,28 +8,38 @@
 
     <div class="event-content">
         <div class="event-content-right">
-            <p>{{ event.date | date('l j F Y') }} <br>{{ event.time | date('H:i') }}</p>
-            <p>{{ event.location | capitalize }}</p>
-            {% if getAllUserByEvent == 1 %}
-                <p>Participant : {{ getAllUserByEvent }}</p>
-            {% else %}
-                <p>Participants : {{ getAllUserByEvent }}</p>
-            {% endif %}
+            <p>
+                <i class="fa-regular fa-calendar"></i>
+                {{ event.date | date('l j F Y') }}
+            </p>
+            <p>
+                <i class="fa-regular fa-clock"></i>
+                {{ event.time | date('H:i') }}
+            </p>
+            <p>
+                <i class="fa-solid fa-location-arrow"></i>
+                {{ event.location | capitalize }}
+            </p>
+            <p>
+                <i class="fa-regular fa-user"></i>
+                {% if getAllUserByEvent == 1 %}
+                    Participant : {{ getAllUserByEvent }}
+                {% else %}
+                    Participants : {{ getAllUserByEvent }}
+                {% endif %}
+            </p>
         </div>
 
         <div class="event-content-left">
             <div>
                 <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
             </div>
-{#            <h2>Description : </h2>#}
             <p class="mg-bot-40">{{ event.description }}</p>
-
             {% if isAlreadyTakePart %}
                 <a href="{{ path('event.participation.remove', {id: event.id}) }}" class="button1">Je me désinscris</a>
             {% else %}
                 <a href="{{ path('event.participation.register', {id: event.id}) }}" class="button1">Participer</a>
             {% endif %}
-
         </div>
     </div>
 </div>

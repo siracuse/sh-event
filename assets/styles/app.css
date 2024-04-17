@@ -10,6 +10,9 @@ a {
     text-decoration: none;
     color: black;
 }
+i {
+    margin-right: 8px;
+}
 
 .mg-top-40 {
     margin-top: 40px;
@@ -100,8 +103,6 @@ nav ul li {
 /*EVENT HOMEPAGE*/
 .event-grid {
     margin-bottom: 20px;
-    /*padding: 20px 0;*/
-    /*max-width: 650px;*/
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .event-grid-description {
@@ -110,9 +111,9 @@ nav ul li {
     word-wrap: break-word;
 }
 
-/*.event-grid div {*/
-/*    margin-left: 10px;*/
-/*}*/
+.event {
+    margin-top: 100px;
+}
 
 .event-grid a {
     display: flex;
@@ -139,7 +140,7 @@ nav ul li {
 /*LOGIN*/
 .form-login {
     width: 400px;
-    margin: 0 auto;
+    margin: 100px auto 0 auto;
 }
 .form-control {
     display: flex;
@@ -303,7 +304,7 @@ footer p {
 
     .event {
         width: 900px;
-        margin: 0 auto
+        margin: 100px auto 0 auto;
     }
 
     .event-grid {
@@ -312,9 +313,14 @@ footer p {
 
     .event-content-left {
         width: 650px;
+        padding-right: 20px;
     }
     .event-content-right {
         width: 350px;
+        padding-left: 30px;
+        background-color: #F6F7F8;
+        height: min-content;
+        border-radius: 5px;
     }
 
     .event-by-user-right {
@@ -345,7 +351,7 @@ footer p {
     }
     footer {
         width: 900px;
-        margin: 200px auto 0 auto;
+        margin: 140px auto 0 auto;
     }
 
 }

@@ -38,23 +38,17 @@ class TakePartRepository extends ServiceEntityRepository
     //    }
 
 
-//SELECT *
-//FROM `take_part` AS t1
-//INNER JOIN `event` ON t1.event_id = event.id
-//WHERE t1.user_id = 5
-
-
-        public function getAllEventByUser($userId)
-        {
-            return $this->createQueryBuilder('t1')
-                ->select('t1', 'e1', 'te')
-                ->innerJoin('t1.event', 'e1')
-                ->innerJoin('e1.type_event', 'te')
-                ->andWhere('t1.user = :userId')
-                ->setParameter('userId', $userId)
-                ->getQuery()
-                ->getResult();
-        }
+    public function getAllEventByUser($userId)
+    {
+        return $this->createQueryBuilder('t1')
+            ->select('t1', 'e1', 'te')
+            ->innerJoin('t1.event', 'e1')
+            ->innerJoin('e1.type_event', 'te')
+            ->andWhere('t1.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
 
     public function getAllEventIdByUser($userId)
     {
@@ -77,4 +71,5 @@ class TakePartRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
 }

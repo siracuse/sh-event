@@ -18,7 +18,7 @@ class EventController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(EventRepository $repository, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
     {
-        $events = $repository->findAll();
+        $events = $repository->getAllEventByStatus('valid');
         return $this->render('front/index.html.twig', [
             'events' => $events,
         ]);
@@ -31,7 +31,6 @@ class EventController extends AbstractController
         $isAlreadyTakePart = false;
         $user = $this->getUser();
         $getAllUserByEvent = $repository->getAllUserByEvent($event->getId());
-//        dd(count($getAllUserByEvent));
         if ($user) {
             $allEventIdByUser = $repository->getAllEventIdByUser($user->getId());
             foreach ($allEventIdByUser as $result) {
@@ -47,24 +46,4 @@ class EventController extends AbstractController
         ]);
     }
 
-
-
-
-
-//    #[Route('/event/{id}', name: 'event')]
-//    public function event(Event $event, TakePartRepository $repository): Response
-//    {
-//
-//        $user = $this->getUser();
-//        $allEventIdByUser = $repository->getAllEventIdByUser($user->getId());
-//        $eventIds = [];
-//        foreach ($allEventIdByUser as $result) {
-//            $eventIds[] = $result['id'];
-//        }
-//
-//        return $this->render('front/event.html.twig', [
-//            'event' => $event,
-//            'eventIds' => $eventIds
-//        ]);
-//    }
 }
