@@ -100,22 +100,32 @@ nav ul li {
 /*EVENT HOMEPAGE*/
 .event-grid {
     margin-bottom: 20px;
-    padding: 20px 0;
+    /*padding: 20px 0;*/
     /*max-width: 650px;*/
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
-.event-grid div {
-    margin-left: 10px;
+.event-grid-description {
+    padding: 15px;
+    width: 55%;
+    word-wrap: break-word;
 }
+
+/*.event-grid div {*/
+/*    margin-left: 10px;*/
+/*}*/
 
 .event-grid a {
     display: flex;
     justify-content: space-between;
 }
-
+.event-grid-image {
+    width: 40%;
+    display: flex;
+}
 .event-grid img {
-    width: 200px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
 }
 .event-grid-title {
     font-weight: 700;
@@ -184,6 +194,7 @@ form .login-button {
     justify-content: space-around;
     margin-bottom: 50px;
     font-weight: 600;
+    border-bottom: 2px solid #dddcd7;
 }
 
 .event-by-user-left {
@@ -238,25 +249,31 @@ footer p {
 
 @media all and (min-width: 800px) {
 
-    .section-events-grid {
-        width: 700px;
-        margin: 100px auto 0 auto;
-    }
+
     .events-grid {
         display: flex;
+        justify-content: space-between;
     }
     .event-grid a {
         display: flex;
         flex-direction: column-reverse;
     }
     .event-grid {
-        margin: 0 20px;
+        /*margin: 0 20px;*/
+        width: 240px;
     }
     .event-grid:first-child {
         margin-left: 0;
     }
     .event-grid:last-child {
         margin-right: 0;
+    }
+
+    .event-grid-description {
+        width: auto;
+    }
+    .event-grid-image {
+        width: auto;
     }
 }
 
@@ -271,10 +288,14 @@ footer p {
         width: 900px;
         margin: 0 auto;
     }
+
     .homepage img {
         width: auto;
     }
-
+    .section-events-grid {
+        width: 900px;
+        margin: 100px auto 0 auto;
+    }
     .event .event-content {
         display: flex;
         flex-direction: row-reverse;
@@ -283,6 +304,10 @@ footer p {
     .event {
         width: 900px;
         margin: 0 auto
+    }
+
+    .event-grid {
+        width: 270px;
     }
 
     .event-content-left {
@@ -295,6 +320,7 @@ footer p {
     .event-by-user-right {
         flex-direction: column;
         justify-content: start;
+        border-bottom: none;
     }
 
     .event-by-user-left {
@@ -302,10 +328,11 @@ footer p {
     }
     .event-by-user-left-content {
         display: flex;
+        padding-right: 40px;
     }
 
     .event-by-user-left-content img {
-        width: 100px;
+        width: 140px;
         margin-right: 40px;
     }
 
@@ -330,6 +357,10 @@ footer p {
 
     .homepage, .section-events-grid {
         width: 1000px;
+    }
+
+    .event-grid {
+        width: 300px;
     }
     .event {
         width: 1000px;

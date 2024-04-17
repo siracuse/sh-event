@@ -34,14 +34,12 @@
             {% for event in events %}
                 <div class="event-grid">
                     <a href="{{ path('event', {id : event.id}) }}">
-                        <div>
+                        <div class="event-grid-description">
                             <p class="event-grid-title">{{ event.title }}</p>
                             <p>{{ event.date | date('d/m/Y') }} {{ event.time | date('H:i') }}</p>
-
-                            {#                        <p>{{ event.typeevent.name }}</p> #}
-                            <p>{{ event.description | striptags|slice(0, 40) ~ '...' }}</p>
+                            <p>{{ event.description | striptags|slice(0, 60) ~ '...' }}</p>
                         </div>
-                        <div class="txt-center">
+                        <div class="event-grid-image">
                             <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
                         </div>
                     </a>
