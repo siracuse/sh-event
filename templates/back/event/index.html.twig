@@ -4,11 +4,7 @@
 {% block body %}
     <h1> Les événements</h1>
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success" id="alert">
-            {{ message }}
-        </div>
-    {% endfor %}
+    {% include 'back/flashMessage.html.twig' %}
 
     <div class="card">
         <div class="card-header">
@@ -32,10 +28,10 @@
                         <td>{{ event.status }}</td>
                         <td class="action">
                             <a href="{{ path('admin.event.edit', {id:event.id}) }}">
-                                <img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt="">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                             <a href="{{ path('admin.event.delete', {id:event.id}) }}">
-                                <img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt="">
+                                <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
                     </tr>

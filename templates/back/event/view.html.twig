@@ -2,58 +2,71 @@
 
 
 {% block body %}
-    <h1>L'événement : {{ event.title }}</h1>
+    <div class="view-card">
 
-    <table>
-        <tr>
-            <th>Titre :</th>
-            <td>{{ event.title }}</td>
-        </tr>
-        <tr>
-            <th>Date :</th>
-            <td>{{ event.date | date('d.m.Y') }}</td>
-        </tr>
+        <div class="view-title">
+            <h1>L'événement : {{ event.title }}</h1>
+        </div>
 
-        <tr>
-            <th>Heure :</th>
-            <td>{{ event.time | date('H:i') }}</td>
-        </tr>
-        <tr>
-            <th>Lieu :</th>
-            <td>{{ event.location }}</td>
-        </tr>
-        <tr>
-            <th>Description :</th>
-            <td>{{ event.description }}</td>
-        </tr>
-        <tr>
-            <th>Photo :</th>
-            {#            <td><img src="{{ asset('images/events/' ~ event.picture) }}" alt=""></td> #}
-            <td>faerfer</td>
-        </tr>
-        <tr>
-            <th>Type d'événement :</th>
-            <td>{{ event.typeevent.name }}</td>
-        </tr>
-        <tr>
-            <th>L'organisateur :</th>
-            <td>{{ event.organiser.name }} {{ event.organiser.firstname }} <br> {{ event.organiser.email }}</td>
-        </tr>
-        <tr>
-            <th>Statut :</th>
-            <td>{{ event.status }}</td>
-        </tr>
-    </table>
+        <div class="view-content">
+            <table>
+                <tr>
+                    <th>Titre :</th>
+                    <td>{{ event.title }}</td>
+                </tr>
+                <tr>
+                    <th>Date :</th>
+                    <td>{{ event.date | date('d.m.Y') }}</td>
+                </tr>
 
-    <div>
-        {% if event.status == 'valid' %}
-            <p><a href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a></p>
-        {% elseif event.status == 'refuse' %}
-            <p><a href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider l'événement</a></p>
-        {% else %}
-            <p><a href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider l'événement</a></p>
-            <p><a href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a></p>
-        {% endif %}
+                <tr>
+                    <th>Heure :</th>
+                    <td>{{ event.time | date('H:i') }}</td>
+                </tr>
+                <tr>
+                    <th>Lieu :</th>
+                    <td>{{ event.location }}</td>
+                </tr>
+                <tr>
+                    <th>Description :</th>
+                    <td>{{ event.description }}</td>
+                </tr>
+                <tr>
+                    <th>Photo :</th>
+                    {#            <td><img src="{{ asset('images/events/' ~ event.picture) }}" alt=""></td> #}
+                    <td>faerfer</td>
+                </tr>
+                <tr>
+                    <th>Type d'événement :</th>
+                    <td>{{ event.typeevent.name }}</td>
+                </tr>
+                <tr>
+                    <th>L'organisateur :</th>
+                    <td>{{ event.organiser.name }} {{ event.organiser.firstname }} <br> {{ event.organiser.email }}</td>
+                </tr>
+                <tr>
+                    <th>Statut :</th>
+                    <td>{{ event.status }}</td>
+                </tr>
+            </table>
+
+            <div>
+                {% if event.status == 'valid' %}
+                    <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
+                    </p>
+                {% elseif event.status == 'refuse' %}
+                    <p><a class="btn btn-primary" href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
+                            l'événement</a></p>
+                {% else %}
+                    <div class="display-f">
+                        <p><a class="btn btn-primary mg-right-20" href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
+                                l'événement</a></p>
+                        <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
 
 
     </div>

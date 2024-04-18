@@ -51,6 +51,9 @@ button {
 .mg-bot-80 {
     margin-bottom: 80px;
 }
+.mg-right-20 {
+    margin-right: 20px;
+}
 
 /*BUTTON*/
 .btn {
@@ -84,7 +87,9 @@ button {
     border-color: #bd2130;
 }
 
-
+.display-f {
+    display: flex;
+}
 
 /*WIDGET*/
 .widget-grid {
@@ -187,7 +192,6 @@ section {
     padding-right: 50px;
     padding-top: 50px;
     width: calc(100% - 250px);
-    /*max-width: 860px;*/
 }
 
 
@@ -250,9 +254,21 @@ section {
     width: 120px;
 }
 
-.table img {
-    width: 24px;
-    margin-right: 12px;
+.table i {
+    font-size: 25px;
+    margin-right: 8px;
+    transition: all 0.3s;
+}
+
+.table .fa-pen-to-square {
+    color: orange;
+}
+
+.table .fa-trash {
+    color: #9b0909;
+}
+.table .fa-pen-to-square:hover, .table .fa-trash:hover {
+    transform: scale(1.15)
 }
 
 
@@ -280,6 +296,30 @@ form div {
     width: 100%;
 }
 
+/* VIEW */
+
+
+.view-card {
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.125);
+    width: fit-content;
+}
+
+.view-title {
+    background-color: rgba(0,0,0,.03);
+    padding: 15px;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.view-content {
+    padding: 15px;
+}
+
+.view-content th {
+    text-align: left;
+    padding-right: 15px;
+}
 
 
 @media all and (min-width: 1000px) {

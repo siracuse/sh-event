@@ -27,8 +27,12 @@
                     <tr>
                         <td>{{ user.name }}</td>
                         <td class="action">
-                            <a href="{{ path('admin.user.edit', {id:user.id}) }}"><img class="icon-edit" src="{{ asset('icon/edit.svg') }}" alt=""></a>
-                            <a href="{{ path('admin.user.delete', {id:user.id}) }}"><img class="icon-delete" src="{{ asset('icon/delete.svg') }}" alt=""></a>
+                            <a href="{{ path('admin.user.edit', {id:user.id}) }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="{{ path('admin.user.delete', {id:user.id}) }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
