@@ -5,7 +5,7 @@
 
 
     <div class="event">
-        <h2>Mes événements en attente</h2>
+
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success" id="alert">
@@ -21,6 +21,7 @@
             </div>
 
             <div class="event-content-left event-by-user-left">
+                <h2 class="mg-top-0 mg-bot-40">Mes événements en attente</h2>
                 {% for event in eventsWaiting %}
                     <div class="mg-bot-80 event-by-user-left-content">
                         <div>
@@ -37,7 +38,7 @@
         </div>
 
 
-        <h2>Mes événements qui ont été refusé</h2>
+
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success" id="alert">
@@ -46,13 +47,14 @@
         {% endfor %}
 
         <div class="event-content">
-{#            <div class="event-content-right event-by-user-right">#}
+            <div class="event-content-right event-by-user-right">
 {#                <p><a href="{{ path('event.participation.list') }}"><i class="fa-regular fa-calendar-days"></i> Mes participations</a></p>#}
 {#                <p><a href="{{ path('new.event') }}"><i class="fa-solid fa-plus"></i> Créer un événement</a></p>#}
 {#                <p><a href="{{ path('myevent.waiting') }}"><i class="fa-solid fa-hourglass-half"></i> Mes événements en attente</a></p>#}
-{#            </div>#}
+            </div>
 
             <div class="event-content-left event-by-user-left">
+                <h2 class="mg-top-0 mg-bot-40">Mes événements qui ont été refusé</h2>
                 {% for event in eventsRefuse %}
                     <div class="mg-bot-80 event-by-user-left-content">
                         <div>

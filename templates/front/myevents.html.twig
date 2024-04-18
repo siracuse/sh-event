@@ -5,7 +5,7 @@
 
 
     <div class="event">
-        <h2>Mes participations</h2>
+
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success" id="alert">
@@ -21,6 +21,7 @@
             </div>
 
             <div class="event-content-left event-by-user-left">
+                <h2 class="mg-top-0">Mes participations</h2>
                 {% for event in allEvents %}
                     <div class="mg-bot-80 event-by-user-left-content">
                         <div>
