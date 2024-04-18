@@ -90,6 +90,9 @@ button {
 .display-f {
     display: flex;
 }
+.no-hover:hover{
+    background-color: transparent;
+}
 
 /*WIDGET*/
 .widget-grid {
@@ -146,7 +149,7 @@ button {
 
 /*LEFT PART*/
 aside {
-    width: 250px;
+    width: 260px;
     position: fixed;
     top: 0;
     left: 0;
@@ -164,7 +167,9 @@ aside .logo {
 aside .logo img {
     width: 80px;
 }
-
+aside i {
+    margin-right: 10px;
+}
 aside .menu {
     display: flex;
     flex-direction: column;
@@ -184,14 +189,14 @@ aside a:hover {
 
 /*RIGHT PART*/
 section {
-    margin-left: 250px;
+    margin-left: 260px;
     margin-bottom: 200px;
     border-radius: 20px 0 0 20px;
     min-height: 100vh;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 50px;
-    width: calc(100% - 250px);
+    width: calc(100% - 260px);
 }
 
 
@@ -323,7 +328,15 @@ form div {
 
 
 @media all and (min-width: 1000px) {
+    /*aside {*/
+    /*    width: 300px;*/
+    /*}*/
 
+    /*section {*/
+    /*    margin-left: 300px;*/
+
+    /*    width: calc(100% - 300px);*/
+    /*}*/
 }
 
 @media all and (min-width: 1200px) {

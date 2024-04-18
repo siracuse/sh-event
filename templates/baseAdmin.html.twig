@@ -20,17 +20,17 @@
 <aside>
     <nav>
         <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="">
+            <a class="no-hover" href="{{ path('index') }}" target="_blank"><img src="{{ asset('images/sh-event.png') }}" alt=""></a>
         </div>
         <div class="menu">
-            <a class="mg-bot-20" href="{{ path('admin.index') }}">Accueil</a>
-            <a href="{{ path('admin.event.index') }}">Tous les événements</a>
-            <a href="{{ path('admin.event.valid.index') }}">Événement validé</a>
-            <a href="{{ path('admin.event.refuse.index') }}">Événement refusé</a>
-            <a class="mg-bot-20" href="{{ path('admin.event.waiting.index') }}">Événement en attente</a>
-            <a class="mg-bot-20" href="{{ path('admin.typeevent.index') }}">Type d'événement</a>
-            <a class="mg-bot-20" href="{{ path('admin.user.index') }}">Utilisateur</a>
-            <a href="{{ path('app_logout') }}">Déconnexion</a>
+            <a class="mg-bot-20" href="{{ path('admin.index') }}"><i class="fa-solid fa-house"></i> Accueil</a>
+            <a href="{{ path('admin.event.index') }}"><i class="fa-solid fa-calendar"></i> Tous les événements</a>
+            <a href="{{ path('admin.event.valid.index') }}"><i class="fa-solid fa-check"></i> Événement validé</a>
+            <a href="{{ path('admin.event.refuse.index') }}"><i class="fa-solid fa-xmark"></i> Événement refusé</a>
+            <a class="mg-bot-20" href="{{ path('admin.event.waiting.index') }}"><i class="fa-solid fa-hourglass-half"></i> Événement en attente</a>
+            <a class="mg-bot-20" href="{{ path('admin.typeevent.index') }}"><i class="fa-solid fa-tag"></i> Type d'événement</a>
+            <a class="mg-bot-20" href="{{ path('admin.user.index') }}"><i class="fa-solid fa-user"></i> Utilisateur</a>
+            <a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
         </div>
     </nav>
 </aside>
