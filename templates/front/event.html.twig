@@ -35,7 +35,7 @@
             <div>
                 <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
             </div>
-            <p class="mg-bot-40">{{ event.description }}</p>
+            <p class="mg-bot-40">{{ event.description | nl2br}}</p>
             {% if isAlreadyTakePart %}
                 <a href="{{ path('event.participation.remove', {id: event.id}) }}" class="button1">Je me désinscris</a>
             {% else %}

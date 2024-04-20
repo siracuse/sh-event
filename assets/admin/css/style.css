@@ -307,7 +307,11 @@ form div {
     width: 100%;
 }
 
-/* VIEW */
+form textarea {
+    height: 120px;
+}
+
+    /* VIEW */
 
 
 .view-card {

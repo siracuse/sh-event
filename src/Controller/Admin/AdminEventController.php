@@ -43,7 +43,7 @@ class AdminEventController extends AbstractController
         $form = $this->createForm(EventAdminType::class, $event);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $event->setStatus('valider');
+            $event->setStatus('valid');
             $event->setOrganiser($user);
             $em->persist($event);
             $em->flush();
