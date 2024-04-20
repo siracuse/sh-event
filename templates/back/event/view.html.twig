@@ -32,11 +32,6 @@
                     <td>{{ event.description }}</td>
                 </tr>
                 <tr>
-                    <th>Photo :</th>
-                    {#            <td><img src="{{ asset('images/events/' ~ event.picture) }}" alt=""></td> #}
-                    <td>faerfer</td>
-                </tr>
-                <tr>
                     <th>Type d'événement :</th>
                     <td>{{ event.typeevent.name }}</td>
                 </tr>
@@ -45,12 +40,12 @@
                     <td>{{ event.organiser.name }} {{ event.organiser.firstname }} <br> {{ event.organiser.email }}</td>
                 </tr>
                 <tr>
-                    <th>Statut :</th>
-                    <td>{{ event.status }}</td>
+                    <th>Photo :</th>
+                    <td><img src="{{ asset('images/events/' ~ event.picture) }}" alt=""></td>
                 </tr>
             </table>
 
-            <div>
+            <div class="mg-top-40">
                 {% if event.status == 'valid' %}
                     <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
                     </p>
@@ -59,7 +54,8 @@
                             l'événement</a></p>
                 {% else %}
                     <div class="display-f">
-                        <p><a class="btn btn-primary mg-right-20" href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
+                        <p><a class="btn btn-primary mg-right-20"
+                              href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
                                 l'événement</a></p>
                         <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
                         </p>

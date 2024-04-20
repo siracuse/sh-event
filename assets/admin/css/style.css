@@ -40,6 +40,12 @@ button {
 }
 
 /*MARGIN*/
+.mg-top-20 {
+    margin-top: 20px;
+}
+.mg-top-40 {
+    margin-top: 40px;
+}
 .mg-bot-20 {
     margin-bottom: 20px;
 }
@@ -324,19 +330,21 @@ form div {
 .view-content th {
     text-align: left;
     padding-right: 15px;
+    width: 150px;
 }
 
 
+.view-content img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+
+
+
 @media all and (min-width: 1000px) {
-    /*aside {*/
-    /*    width: 300px;*/
-    /*}*/
 
-    /*section {*/
-    /*    margin-left: 300px;*/
-
-    /*    width: calc(100% - 300px);*/
-    /*}*/
 }
 
 @media all and (min-width: 1200px) {

@@ -21,7 +21,7 @@
             </div>
 
             <div class="event-content-left event-by-user-left">
-                <h2 class="mg-top-0">Mes participations</h2>
+                <h2 class="mg-top-0 mg-bot-40">Mes participations</h2>
                 {%  if allEvents == [] %}
                     <p>Vous ne participez à aucun événement.</p>
                 {% endif %}
@@ -33,7 +33,7 @@
                         <div class="mg-bot-40">
                             <p class="event-by-user-datetime">{{ event.event.date | date('l j F Y') }} {{ event.event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.event.title }}</p>
-                            <p class="event-by-user-description">{{ event.event.description }}</p>
+                            <p class="event-by-user-description">{{ event.event.description | striptags|slice(0, 90) ~ ' ...'}}</p>
                         </div>
                     </a>
                 {% endfor %}
