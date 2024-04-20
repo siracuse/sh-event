@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"#}
+{#          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="#}
+{#          crossorigin="anonymous" referrerpolicy="no-referrer"/>#}
     {% block stylesheets %}
     {% endblock %}
 
@@ -25,13 +24,13 @@
     <a href="{{ path('index') }}"><img src="{{ asset('images/sh-event.png') }}" alt=""></a>
     <nav>
         <ul>
+            <li><a class="button2" href="{{ path('index') }}">Accueil </a></li>
             {% if app.user %}
-                <li><a href="{{ path('index') }}">Accueil </a></li>
-                <li><a href="{{ path('event.participation.list') }}">Vos événements </a></li>
-                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                <li><a class="button2" href="{{ path('event.participation.list') }}">Vos événements </a></li>
+                <li><a class="button2" href="{{ path('app_logout') }}">Déconnexion</a></li>
             {% else %}
-                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                <li><a href="{{ path('app_register') }}" class="button1">S'inscrire</a></li>
+                <li><a class="button2" href="{{ path('app_login') }}">Se connecter</a></li>
+                <li><a class="button1" href="{{ path('app_register') }}">S'inscrire</a></li>
             {% endif %}
 
         </ul>
@@ -45,10 +44,10 @@
         <div class="footer-section">
             <p>Nous suivre</p>
             <div>
-                <img src="{{ asset('images/facebook.png') }}" alt="">
-                <img src="{{ asset('images/instagram.png') }}" alt="">
-                <img src="{{ asset('images/tiktok.png') }}" alt="">
-                <img src="{{ asset('images/youtube.png') }}" alt="">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
 
@@ -56,11 +55,11 @@
             <p>Votre compte</p>
             <div class="footer-section-account">
                 {% if app.user %}
-                    <a href="{{ path('event.participation.list') }}">Vos événements </a>
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    <a class="button2" href="{{ path('event.participation.list') }}">Vos événements </a>
+                    <a class="button2" href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}">Se connecter</a>
-                    <a href="{{ path('app_register') }}">S'inscrire</a>
+                    <a class="button2" href="{{ path('app_login') }}">Se connecter</a>
+                    <a class="button2" href="{{ path('app_register') }}">S'inscrire</a>
                 {% endif %}
             </div>
         </div>

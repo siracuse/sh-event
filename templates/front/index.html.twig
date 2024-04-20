@@ -4,25 +4,26 @@
 
 
     <div class="homepage">
-        <div>
-            <h1>La plate-forme des relations humaines : l'endroit où les centres d'intérêt donnent naissance à des
-                amitiés</h1>
+        <div class="homepage-content">
+            <h1>
+                Là où les passions se rencontrent pour créer des amitiés durables : c'est la plate-forme des relations
+                humaines.
+            </h1>
             <p>
-                Quel que soit votre centre d'intérêt, de la randonnée à la lecture en passant par le réseautage et le
-                partage de
-                compétences, il y a des milliers de personnes qui le partagent sur Meetup. Des événements ont lieu tous
-                les
-                jours : inscrivez-vous pour en profiter.
+                Peu importe votre passion, la technologie, le développement, l'analyse de données, SH Event regroupe des
+                milliers d'individus partageant vos intérêts. Des événements sont
+                organisés quotidiennement : rejoignez-nous pour en faire l'expérience.
             </p>
             {% if app.user %}
-                <p class="mg-top-40"><a href="{{ path('event.participation.list') }}" class="button1">Vos événements</a></p>
+                <p class="mg-top-40"><a href="{{ path('event.participation.list') }}" class="button1">Vos événements</a>
+                </p>
             {% else %}
-                <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH-meetup</a></p>
+                <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH Event</a></p>
             {% endif %}
         </div>
 
         <div class="homepage-img">
-            <img src="{{ asset('images/meeting.jpg') }}" alt="">
+            <img src="{{ asset('images/meeting.png') }}" alt="">
         </div>
 
     </div>
