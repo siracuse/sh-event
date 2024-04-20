@@ -22,6 +22,9 @@
 
             <div class="event-content-left event-by-user-left">
                 <h2 class="mg-top-0">Mes participations</h2>
+                {%  if allEvents == [] %}
+                    <p>Vous ne participez à aucun événement.</p>
+                {% endif %}
                 {% for event in allEvents %}
                     <a class="mg-bot-26 event-by-user-left-content"  href="{{ path('event', {id : event.event.id}) }}">
                         <div>
