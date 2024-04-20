@@ -16,11 +16,16 @@ use Symfony\Component\Routing\Attribute\Route;
 class EventController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(EventRepository $repository, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
+    public function index(EventRepository $repository, Request $request): Response
     {
-        $events = $repository->getAllEventByStatus('valid');
+        $page = $request->query->getInt('page', 1);
+        $limit = 2;
+        $events = $repository->paginateEvent($page, $limit, 'valid');
+        $maxPage = ceil($events->count() / $limit);
         return $this->render('front/index.html.twig', [
             'events' => $events,
+            'maxPages' => $maxPage,
+            'page' => $page
         ]);
     }
 
