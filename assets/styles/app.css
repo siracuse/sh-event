@@ -45,6 +45,11 @@ i {
     text-align: center;
 }
 
+.color-grey {
+    color: grey;
+    font-size: 14px;
+}
+
 /*BUTTON*/
 .button1 {
     padding: 10px 20px;
@@ -220,7 +225,12 @@ nav ul li:last-child {
     margin-bottom: 28px;
     height: 100px;
 }
-
+.form-login ul {
+    margin : 0
+}
+.form-login li {
+    color: red;
+}
 
 form .login-button {
     margin-top: 30px;

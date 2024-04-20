@@ -17,7 +17,10 @@ button {
     border: none;
     background: transparent;
 }
-
+.color-grey {
+    color: grey;
+    font-size: 14px;
+}
 
 
 /* MESSAGE ALERT*/
@@ -307,13 +310,22 @@ form div {
     width: 100%;
 }
 
+form ul {
+    margin : 0
+}
+form li {
+    color: red;
+}
+
 form textarea {
     height: 120px;
 }
+.form-img-edit img{
+    width: 140px;
+}
 
-    /* VIEW */
 
-
+/* VIEW */
 .view-card {
     border-radius: 5px;
     background-color: white;

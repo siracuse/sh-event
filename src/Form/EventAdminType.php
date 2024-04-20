@@ -42,7 +42,8 @@ class EventAdminType extends AbstractType
                 'label' => 'Description : '
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'L\'image :'
+                'label' => 'L\'image :',
+                'required' => false
             ])
             ->add('typeevent', EntityType::class, [
                 'class' => TypeEvent::class,

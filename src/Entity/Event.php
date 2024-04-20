@@ -21,15 +21,18 @@ class Event
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Assert\NotBlank]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $time = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -40,7 +43,12 @@ class Event
     private ?string $picture = null;
 //    propriété correspondant a la data de l'image
     #[Vich\UploadableField(mapping: 'events', fileNameProperty: 'picture')]
-    #[Assert\Image()]
+    #[Assert\File(
+        maxSize: '1024k',
+        maxSizeMessage: 'L\image est trop lourde',
+        extensions: ['jpg', 'png'],
+        extensionsMessage: 'Seul les formats .jpg et .png sont acceptés'
+    )]
     private ?File $imageFile = null;
 
 //    propriete permettant de soumettre une image si aucun autre champ n'est renseigné, lors d'une édition par exemple
