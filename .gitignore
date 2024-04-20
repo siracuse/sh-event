@@ -24,5 +24,4 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-/public/images/events
 /public/images/events/*
