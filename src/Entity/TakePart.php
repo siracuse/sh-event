@@ -49,7 +49,7 @@ class TakePart
         return $this->event;
     }
 
-    public function setEvent(?event $event): static
+    public function setEvent(?Event $event): static
     {
         $this->event = $event;
 
@@ -61,7 +61,7 @@ class TakePart
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
