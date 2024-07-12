@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\TakePartRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TakePartRepository::class)]
 class TakePart
