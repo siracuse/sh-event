@@ -44,7 +44,7 @@ class TakePart
         return $this;
     }
 
-    public function getEvent(): ?event
+    public function getEvent(): ?Event
     {
         return $this->event;
     }
@@ -56,7 +56,7 @@ class TakePart
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
