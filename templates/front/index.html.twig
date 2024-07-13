@@ -48,14 +48,14 @@
                 {% endfor %}
             {% endif %}
         </div>
-{#        <div class="mg-top-80">#}
-{#            {% if page > 1 %}#}
-{#                <a class="button1" href="{{ path('index', {page: page - 1}) }}#shevent">Page précédente</a>#}
-{#            {% endif %}#}
-{#            {% if page < maxPages %}#}
-{#                <a class="button1" href="{{ path('index', {page: page + 1}) }}#shevent">Page suivante</a>#}
-{#            {% endif %}#}
-{#        </div>#}
+        <div class="mg-top-80">
+            {% if page > 1 %}
+                <a class="button1" href="{{ path('index', {page: page - 1}) }}#shevent">Page précédente</a>
+            {% endif %}
+            {% if page < maxPages %}
+                <a class="button1" href="{{ path('index', {page: page + 1}) }}#shevent">Page suivante</a>
+            {% endif %}
+        </div>
     </div>
 
 {% endblock %}
