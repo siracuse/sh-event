@@ -31,7 +31,7 @@
     <div class="section-events-grid" id="shevent">
         <h2 class="mg-bot-40">Les événements</h2>
         <div class="events-grid">
-            {% if event %}
+            {% if events %}
                 {% for event in events %}
                     <div class="event-grid">
                         <a href="{{ path('event', {id : event.id}) }}">
