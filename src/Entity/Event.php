@@ -67,7 +67,7 @@ class Event
 
     #[ORM\ManyToOne(inversedBy: 'events')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $organiser = null;
+    private ?User $organiser = null;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
