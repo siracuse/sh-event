@@ -17,11 +17,12 @@ class EventController extends AbstractController
     {
         $page = $request->query->getInt('page', 1);
         $limit = 2;
-        $events = $repository->paginateEvent($page, $limit, 'valid');
-        $maxPage = ceil($events->count() / $limit);
+//        $events = $repository->paginateEvent($page, $limit, 'valid');
+        $events = $repository->getAllEventByStatus('valid');
+//        $maxPage = ceil($events->count() / $limit);
         return $this->render('front/index.html.twig', [
             'events' => $events,
-            'maxPages' => $maxPage,
+//            'maxPages' => $maxPage,
             'page' => $page
         ]);
     }
