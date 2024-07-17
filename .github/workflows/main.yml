@@ -16,9 +16,9 @@ jobs:
     - name: Déployer sur IONOS
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.IONOS_HOST }}
-        username: ${{ secrets.IONOS_USERNAME }}
-        key: ${{ secrets.IONOS_SSH_KEY }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
           cd /kunden/homepages/3/d1012043953/htdocs/www/sh-event
