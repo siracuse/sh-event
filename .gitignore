@@ -24,5 +24,9 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
+
+
+
+/src/DataFixtures
 /public/images/events/*
 /composer.phar

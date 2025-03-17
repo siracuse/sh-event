@@ -62,7 +62,7 @@ class Event
     /**
      * @var Collection<int, TakePart>
      */
-    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event')]
+    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event', cascade: ["remove"], orphanRemoval: true)]
     private Collection $takeParts;
 
     #[ORM\ManyToOne(inversedBy: 'events')]

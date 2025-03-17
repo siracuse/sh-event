@@ -36,7 +36,11 @@
                         <div>
                             <p class="event-by-user-datetime">{{ event.date | format_datetime(pattern='EEEE dd MMMM Y', locale: 'fr') }} {{ event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.title }}</p>
-                            <p> Statut : {{ event.status }}</p>
+                            {% if event.status == 'waiting' %}
+                            <p>Statut : en attente</p>
+                            {% endif %}
+{#                            <p> Statut : {{ event.status }}</p>#}
+{#                            {{ dump(event.status) }}#}
                         </div>
                     </div>
                 {% endfor %}
@@ -55,10 +59,10 @@
             </div>
 
             <div class="event-content-left event-by-user-left">
-                <h2 class="mg-top-0 mg-bot-40">Mes événements qui ont été refusé</h2>
+                <h2 class="mg-top-0 mg-bot-40">Mes événements refusés</h2>
                 {% if eventsRefuse == [] %}
                     <div class="mg-bot-80 event-by-user-left-content">
-                        Vous n'avez aucun événement qui ont été refusé
+                        Vous n'avez aucun événement refusé
                     </div>
                 {% endif %}
                 {% for event in eventsRefuse %}
@@ -67,9 +71,11 @@
                             <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
                         </div>
                         <div>
-                            <p class="event-by-user-datetime">{{ event.date | date('l j F Y') }} {{ event.time | date('H:i') }}</p>
+                            <p class="event-by-user-datetime">{{ event.date | format_datetime(pattern='EEEE dd MMMM Y', locale: 'fr') }} {{ event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.title }}</p>
-                            <p> Statut : {{ event.status }}</p>
+                            {% if event.status == 'refuse' %}
+                                <p>Statut : refusé</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
         $user2 = new User();
-        $user2->setEmail('toto.@gmail.com')
+        $user2->setEmail('toto@gmail.com')
             ->setRoles(['ROLE_USER'])
             ->setPassword($this->hasher->hashPassword($user2, 'toto'))
             ->setName('toto')

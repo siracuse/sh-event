@@ -17,7 +17,7 @@ class TakePart
     private ?string $registration_status = null;
 
     #[ORM\ManyToOne(inversedBy: 'takeParts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     #[ORM\Id]
     private ?Event $event = null;
 
