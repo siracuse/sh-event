@@ -6,7 +6,6 @@
 
     <div class="event">
 
-
         {% for message in app.flashes('success') %}
             <div class="alert alert-success" id="alert">
                 {{ message }}
@@ -24,13 +23,18 @@
 
             <div class="event-content-left event-by-user-left">
                 <h2 class="mg-top-0 mg-bot-40">Mes événements en attente</h2>
+                {% if eventsWaiting == [] %}
+                    <div class="mg-bot-80 event-by-user-left-content">
+                        Vous n'avez aucun événement en attente de validation par l'administrateur
+                    </div>
+                {% endif %}
                 {% for event in eventsWaiting %}
                     <div class="mg-bot-80 event-by-user-left-content">
                         <div>
                             <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
                         </div>
                         <div>
-                            <p class="event-by-user-datetime">{{ event.date | date('l j F Y') }} {{ event.time | date('H:i') }}</p>
+                            <p class="event-by-user-datetime">{{ event.date | format_datetime(pattern='EEEE dd MMMM Y', locale: 'fr') }} {{ event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.title }}</p>
                             <p> Statut : {{ event.status }}</p>
                         </div>
@@ -52,6 +56,11 @@
 
             <div class="event-content-left event-by-user-left">
                 <h2 class="mg-top-0 mg-bot-40">Mes événements qui ont été refusé</h2>
+                {% if eventsRefuse == [] %}
+                    <div class="mg-bot-80 event-by-user-left-content">
+                        Vous n'avez aucun événement qui ont été refusé
+                    </div>
+                {% endif %}
                 {% for event in eventsRefuse %}
                     <div class="mg-bot-80 event-by-user-left-content">
                         <div>

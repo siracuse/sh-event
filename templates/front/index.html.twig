@@ -40,7 +40,7 @@
                             </div>
                             <div class="event-grid-description">
                                 <p class="event-grid-title">{{ event.title }}</p>
-                                <p class="event-grid-date"><i class="fa-regular fa-calendar"></i> {{ event.date | date('d F Y') }} à {{ event.time | date('H:i') }}</p>
+                                <p class="event-grid-date"><i class="fa-regular fa-calendar"></i> {{ event.date | format_datetime(pattern='dd MMMM Y', locale: 'fr')}} à {{ event.time | date('H:i') }}</p>
                                 <p>{{ event.description | striptags|slice(0, 60) ~ ' ...' }}</p>
                             </div>
                         </a>

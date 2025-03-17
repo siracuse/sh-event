@@ -11,7 +11,7 @@
             <p class="mg-bot-26"><strong>Détails de l'événement : </strong></p>
             <p>
                 <i class="fa-regular fa-calendar"></i>
-                {{ event.date | date('l j F Y') }}
+                {{ event.date | format_datetime(pattern='eeee dd MMMM Y', locale: 'fr')}}
             </p>
             <p>
                 <i class="fa-regular fa-clock"></i>
@@ -23,7 +23,7 @@
             </p>
             <p>
                 <i class="fa-regular fa-user"></i>
-                {% if getAllUserByEvent == 1 %}
+                {% if getAllUserByEvent <= 1 %}
                     Participant : {{ getAllUserByEvent }}
                 {% else %}
                     Participants : {{ getAllUserByEvent }}

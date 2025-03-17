@@ -47,18 +47,26 @@
 
             <div class="mg-top-40">
                 {% if event.status == 'valid' %}
-                    <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
+                    <p>
+                        <a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
+                        <a class="btn btn-secondary mg-left-10" href="{{ path('admin.event.valid.index') }}">Retour </a>
                     </p>
+
                 {% elseif event.status == 'refuse' %}
-                    <p><a class="btn btn-primary" href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
-                            l'événement</a></p>
+                    <p>
+                        <a class="btn btn-primary" href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
+                            l'événement</a>
+                        <a class="btn btn-secondary mg-left-10" href="{{ path('admin.event.refuse.index') }}">Retour </a>
+                    </p>
+
                 {% else %}
                     <div class="display-f">
-                        <p><a class="btn btn-primary mg-right-20"
+                        <p><a class="btn btn-primary"
                               href="{{ path('admin.event.waiting.valid', {'id': event.id}) }}">Valider
                                 l'événement</a></p>
-                        <p><a class="btn btn-danger" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
+                        <p><a class="btn btn-danger mg-left-10" href="{{ path('admin.event.waiting.refuse', {'id': event.id}) }}">Refuser </a>
                         </p>
+                        <p><a class="btn btn-secondary mg-left-10" href="{{ path('admin.event.waiting.index') }}">Retour </a></p>
                     </div>
                 {% endif %}
             </div>

@@ -15,25 +15,28 @@
 
         <div class="event-content">
             <div class="event-content-right event-by-user-right">
-                <p><a class="button2" href="{{ path('event.participation.list') }}"><i class="fa-regular fa-calendar-days"></i> Mes participations</a></p>
-                <p><a class="button2" href="{{ path('new.event') }}"><i class="fa-solid fa-plus"></i> Créer un événement</a></p>
-                <p><a class="button2" href="{{ path('myevent.waiting') }}"><i class="fa-solid fa-hourglass-half"></i> Mes événements en attente</a></p>
+                <p><a class="button2" href="{{ path('event.participation.list') }}"><i
+                                class="fa-regular fa-calendar-days"></i> Mes participations</a></p>
+                <p><a class="button2" href="{{ path('new.event') }}"><i class="fa-solid fa-plus"></i> Créer un événement</a>
+                </p>
+                <p><a class="button2" href="{{ path('myevent.waiting') }}"><i class="fa-solid fa-hourglass-half"></i>
+                        Mes événements en attente</a></p>
             </div>
 
             <div class="event-content-left event-by-user-left">
                 <h2 class="mg-top-0 mg-bot-40">Mes participations</h2>
-                {%  if allEvents == [] %}
+                {% if allEvents == [] %}
                     <p>Vous ne participez à aucun événement.</p>
                 {% endif %}
                 {% for event in allEvents %}
-                    <a class="mg-bot-26 event-by-user-left-content"  href="{{ path('event', {id : event.event.id}) }}">
+                    <a class="mg-bot-26 event-by-user-left-content" href="{{ path('event', {id : event.event.id}) }}">
                         <div>
                             <img src="{{ asset('images/events/' ~ event.event.picture) }}" alt="">
                         </div>
                         <div class="mg-bot-40">
-                            <p class="event-by-user-datetime">{{ event.event.date | date('l j F Y') }} {{ event.event.time | date('H:i') }}</p>
+                            <p class="event-by-user-datetime">{{ event.event.date | format_datetime(pattern='EEEE dd MMMM Y', locale: 'fr') }} {{ event.event.time | date('H:i') }}</p>
                             <p class="event-by-user-title">{{ event.event.title }}</p>
-                            <p class="event-by-user-description">{{ event.event.description | striptags|slice(0, 90) ~ ' ...'}}</p>
+                            <p class="event-by-user-description">{{ event.event.description | striptags|slice(0, 90) ~ ' ...' }}</p>
                         </div>
                     </a>
                 {% endfor %}
