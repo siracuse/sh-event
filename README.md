@@ -15,7 +15,7 @@ L'objectif de ce projet personnel était de m'entraîner sur Symfony 7, et de co
 - Back office pour administration des annonces et utilisateurs 
 
 ## 🛠 Stack
-- Symfony 7
+- Symfony 7.4
 - HTML/CSS
 
 ## 💡 Pistes d'amélioration
