@@ -8,11 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Attribute\Uploadable as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
-#[Vich\Uploadable]
+// #[Vich\Uploadable]
 class Event
 {
     #[ORM\Id]
@@ -21,18 +21,15 @@ class Event
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Assert\NotBlank]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $time = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -42,13 +39,13 @@ class Event
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 //    propriété correspondant a la data de l'image
-    #[Vich\UploadableField(mapping: 'events', fileNameProperty: 'picture')]
-    #[Assert\File(
-        maxSize: '1024k',
-        maxSizeMessage: 'L\image est trop lourde',
-        extensions: ['jpg', 'png'],
-        extensionsMessage: 'Seul les formats .jpg et .png sont acceptés'
-    )]
+    #[Vich(mapping: 'events', fileNameProperty: 'picture')]
+    // #[Assert\File(
+    //     maxSize: '1024k',
+    //     maxSizeMessage: 'L\image est trop lourde',
+    //     extensions: ['jpg', 'png'],
+    //     extensionsMessage: 'Seul les formats .jpg et .png sont acceptés'
+    // )]
     private ?File $imageFile = null;
 
 //    propriete permettant de soumettre une image si aucun autre champ n'est renseigné, lors d'une édition par exemple

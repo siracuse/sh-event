@@ -17,12 +17,12 @@ class TakePart
     private ?string $registration_status = null;
 
     #[ORM\ManyToOne(inversedBy: 'takeParts')]
-    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
+    #[ORM\JoinColumn(onDelete: "CASCADE")]
     #[ORM\Id]
     private ?Event $event = null;
 
     #[ORM\ManyToOne(inversedBy: 'takeParts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn]
     #[ORM\Id]
     private ?User $user = null;
 
