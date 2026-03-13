@@ -1,0 +1,29 @@
+<h1>{{ event.title }}</h1>
+
+<div class="event-content">
+	<div class="event-content-right">
+		<p class="mg-bot-26">
+			<strong>Détails de l'événement :
+			</strong>
+		</p>
+		<p>
+			Date :
+			{{ event.date | format_datetime(pattern='eeee dd MMMM Y', locale: 'fr')}}
+		</p>
+		<p>
+			Heure :
+			{{ event.time | date('H:i') }}
+		</p>
+		<p>
+			Lieu :
+			{{ event.location | capitalize }}
+		</p>
+	</div>
+
+	<div class="event-content-left">
+		<div>
+			<img src="{{ absolute_url(asset('images/events/' ~ event.picture)) }}" alt="">
+		</div>
+		<p class="mg-bot-40">{{ event.description | nl2br}}</p>
+	</div>
+</div>

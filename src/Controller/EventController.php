@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Event;
 use App\Repository\EventRepository;
 use App\Repository\TakePartRepository;
+use App\Service\PdfGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +37,7 @@ class EventController extends AbstractController
         if ($user) {
             $allEventIdByUser = $repository->getAllEventIdByUser($user->getId());
             foreach ($allEventIdByUser as $result) {
-                if( $event->getId() == $result['id']) {
+                if ($event->getId() == $result['id']) {
                     $isAlreadyTakePart = true;
                 }
             }
@@ -48,4 +49,22 @@ class EventController extends AbstractController
         ]);
     }
 
+    #[Route('/event/{id}/pdf', name: 'event.pdf')]
+    public function eventPdf(Event $event, PdfGenerator $pdfGenerator): Response
+    {
+        $html = $this->renderView('front/pdf/event.html.twig', [
+            'event' => $event
+        ]);
+
+        $pdf = $pdfGenerator->generate($html);
+
+        return new Response(
+            $pdf,
+            200,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="event.pdf"'
+            ]
+        );
+    }
 }

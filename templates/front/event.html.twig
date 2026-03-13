@@ -29,6 +29,7 @@
                     Participants : {{ getAllUserByEvent }}
                 {% endif %}
             </p>
+
         </div>
 
         <div class="event-content-left">
@@ -41,6 +42,9 @@
             {% else %}
                 <a href="{{ path('event.participation.register', {id: event.id}) }}" class="button1">Participer</a>
             {% endif %}
+            {# <p> #}
+                <a class="button1" href="{{ path('event.pdf', {id: event.id}) }}">Télécharger la fiche de l'event</a>
+            {# </p> #}
         </div>
     </div>
 </div>
