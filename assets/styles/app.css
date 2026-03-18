@@ -16,7 +16,9 @@ a {
 i {
     margin-right: 8px;
 }
-
+.min-height {
+    min-height: 55vh;
+}
 .mg-top-0 {
     margin-top: 0
 }
@@ -307,6 +309,12 @@ footer p {
     margin-bottom: 10px;
 }
 
+.section {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
 @media all and (min-width: 600px) {
 
     .event-grid img {
@@ -435,6 +443,9 @@ footer p {
     }
 
     .homepage, .section-events-grid {
+        width: 1000px;
+    }
+    .section {
         width: 1000px;
     }
 
