@@ -16,11 +16,26 @@ a {
 i {
     margin-right: 8px;
 }
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
 .min-height {
     min-height: 55vh;
 }
 .mg-top-0 {
     margin-top: 0
+}
+.mg-top-30 {
+    margin-top: 30px;
 }
 
 .mg-top-40 {

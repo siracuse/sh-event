@@ -3,9 +3,7 @@
 {% block body %}
     <div class="min-height">
     <form method="post" class="form-login">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+
 
         {% if app.user %}
             <div class="mb-3">
@@ -36,6 +34,10 @@
                 <input type="checkbox" name="_remember_me"> Rester connecté(e)
             </label>
         </div>
+
+        {% if error %}
+            <div class="alert alert-danger mg-top-30">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
         <button type="submit" class="button1 login-button">
             Se connecter
