@@ -17,7 +17,7 @@ class EventController extends AbstractController
     public function index(EventRepository $repository, Request $request): Response
     {
         $page = $request->query->getInt('page', 1);
-        $limit = 2;
+        $limit = 6;
         $events = $repository->paginateEvent($page, $limit, 'valid');
         $maxPage = ceil($events->count() / $limit);
         return $this->render('front/index.html.twig', [
