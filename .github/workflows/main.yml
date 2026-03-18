@@ -23,4 +23,6 @@ jobs:
         script: |
           cd /kunden/homepages/3/d1012043953/htdocs/www/sh-event
           git pull origin main
-          php8.2-cli bin/console cache:clear
+          php8.2-cli bin/console asset-map:compile
+          php8.2-cli bin/console cache:clear --env=prod
+          php8.2-cli bin/console cache:warmup --env=prod
