@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Event;
 use App\Form\EventAdminType;
-use App\Form\EventType;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,15 +12,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-
-#[Route('/admin/event', name:'admin.event.')]
-#[isGranted('ROLE_ADMIN')]
+#[Route('/admin/event', name: 'admin.event.')]
+#[IsGranted('ROLE_ADMIN')]
 class AdminEventController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(EventRepository $repository): Response
     {
         $events = $repository->findAll();
+
         return $this->render('back/event/index.html.twig', [
             'events' => $events,
         ]);
@@ -48,8 +47,10 @@ class AdminEventController extends AbstractController
             $em->persist($event);
             $em->flush();
             $this->addFlash('success', "L'événement a bien été ajoutée");
+
             return $this->redirectToRoute('admin.event.index');
         }
+
         return $this->render('back/event/new.html.twig', [
             'form' => $form,
         ]);
@@ -63,11 +64,13 @@ class AdminEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
             $this->addFlash('success', "L'événement a bien été modifiée");
+
             return $this->redirectToRoute('admin.event.index');
         }
+
         return $this->render('back/event/edit.html.twig', [
             'form' => $form,
-            'event' => $event
+            'event' => $event,
         ]);
     }
 
@@ -77,17 +80,18 @@ class AdminEventController extends AbstractController
         $em->remove($event);
         $em->flush();
         $this->addFlash('success', "L'événement a bien été supprimée");
+
         return $this->redirectToRoute('admin.event.index');
     }
-
 
     #[Route('/valid', name: 'valid.index')]
     public function valid(EventRepository $repository)
     {
         $events = $repository->getAllEventByStatus('valid');
+
         return $this->render('back/event/eventByStatus.html.twig', [
             'events' => $events,
-            'title' => 'Les événements qui ont été validé ✅'
+            'title' => 'Les événements qui ont été validé ✅',
         ]);
     }
 
@@ -95,9 +99,10 @@ class AdminEventController extends AbstractController
     public function refuse(EventRepository $repository)
     {
         $events = $repository->getAllEventByStatus('refuse');
+
         return $this->render('back/event/eventByStatus.html.twig', [
             'events' => $events,
-            'title' => 'Les événements qui ont été refusé ❌'
+            'title' => 'Les événements qui ont été refusé ❌',
         ]);
     }
 
@@ -105,12 +110,12 @@ class AdminEventController extends AbstractController
     public function waiting(EventRepository $repository): Response
     {
         $events = $repository->getAllEventByStatus('waiting');
+
         return $this->render('back/event/eventByStatus.html.twig', [
             'events' => $events,
-            'title' => 'Les événements qui sont mise en attente ⏳'
+            'title' => 'Les événements qui sont mise en attente ⏳',
         ]);
     }
-
 
     //  TO CHANGE STATUS EVENT
     #[Route('/waiting/valid/{id}', name: 'waiting.valid')]
@@ -118,6 +123,7 @@ class AdminEventController extends AbstractController
     {
         $event->setStatus('valid');
         $em->flush();
+
         return $this->redirectToRoute('admin.event.waiting.index');
     }
 
@@ -126,8 +132,7 @@ class AdminEventController extends AbstractController
     {
         $event->setStatus('refuse');
         $em->flush();
+
         return $this->redirectToRoute('admin.event.waiting.index');
     }
-
-
 }

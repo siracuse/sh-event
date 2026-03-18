@@ -15,10 +15,10 @@ class TypeEventType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom :'
+                'label' => 'Nom :',
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Valider'
+                'label' => 'Valider',
             ])
         ;
     }

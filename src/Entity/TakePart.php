@@ -8,16 +8,15 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: TakePartRepository::class)]
 class TakePart
 {
-
-//    #[ORM\GeneratedValue]
-//    #[ORM\Column]
-//    private ?int $id = null;
+    //    #[ORM\GeneratedValue]
+    //    #[ORM\Column]
+    //    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $registration_status = null;
 
     #[ORM\ManyToOne(inversedBy: 'takeParts')]
-    #[ORM\JoinColumn(onDelete: "CASCADE")]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
     #[ORM\Id]
     private ?Event $event = null;
 
@@ -26,10 +25,10 @@ class TakePart
     #[ORM\Id]
     private ?User $user = null;
 
-//    public function getId(): ?int
-//    {
-//        return $this->id;
-//    }
+    //    public function getId(): ?int
+    //    {
+    //        return $this->id;
+    //    }
 
     public function getRegistrationStatus(): ?string
     {

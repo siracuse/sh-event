@@ -20,13 +20,13 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Adresse e-mail'
+                'label' => 'Adresse e-mail',
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Prénom'
+                'label' => 'Prénom',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -35,7 +35,7 @@ class RegistrationFormType extends AbstractType
                 //         'message' => 'You should agree to our terms.',
                 //     ]),
                 // ],
-                'label' => 'J\'accepte les conditions'
+                'label' => 'J\'accepte les conditions',
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

@@ -10,7 +10,7 @@ class EventControllerTest extends WebTestCase
     public function testIndex200()
     {
         $client = static::createClient();
-        $client->request('GET', '/'); 
+        $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
     }
@@ -25,8 +25,7 @@ class EventControllerTest extends WebTestCase
         $this->assertNotNull($event, 'Aucun événement trouvé dans la base de test');
 
         $eventId = $event->getId();
-        $client->request('GET', '/event/' . $eventId);
+        $client->request('GET', '/event/'.$eventId);
         $this->assertResponseIsSuccessful();
     }
-
 }

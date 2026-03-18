@@ -14,27 +14,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[isGranted('ROLE_USER')]
+#[IsGranted('ROLE_USER')]
 class RegisterEventController extends AbstractController
 {
-
     #[Route('/register/event/{id}', name: 'event.participation.register')]
     public function registerParticipationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
     {
         $user = $this->getUser();
         $take_part = $repository->findOneBy(['user' => $user->getId(), 'event' => $event->getId()]);
 
-        if(!$take_part) {
+        if (!$take_part) {
             $newTake_part = new TakePart();
             $newTake_part->setEvent($event);
             $newTake_part->setUser($user);
             $newTake_part->setRegistrationStatus('valider');
             $em->persist($newTake_part);
             $em->flush();
+
             return $this->redirectToRoute('event', ['id' => $event->getId()]);
-        } else {
-            return $this->redirectToRoute('event.participation.list');
         }
+
+        return $this->redirectToRoute('event.participation.list');
     }
 
     #[Route('/event/remove_participation_event/{id}', name: 'event.participation.remove')]
@@ -49,15 +49,14 @@ class RegisterEventController extends AbstractController
         return $this->redirectToRoute('event', ['id' => $event->getId()]);
     }
 
-
     #[Route('/myevents', name: 'event.participation.list')]
-    public function myEvents(TakePartRepository $repository ): Response
+    public function myEvents(TakePartRepository $repository): Response
     {
         $user = $this->getUser();
         $allEvents = $repository->getAllEventByUser($user->getId());
 
         return $this->render('front/myevents.html.twig', [
-            'allEvents' => $allEvents
+            'allEvents' => $allEvents,
         ]);
     }
 
@@ -74,8 +73,10 @@ class RegisterEventController extends AbstractController
             $em->persist($event);
             $em->flush();
             $this->addFlash('success', "L'événement a bien été ajoutée");
+
             return $this->redirectToRoute('myevent.waiting');
         }
+
         return $this->render('front/new.html.twig', [
             'form' => $form,
         ]);
@@ -90,9 +91,7 @@ class RegisterEventController extends AbstractController
 
         return $this->render('front/myeventswaiting.html.twig', [
             'eventsWaiting' => $eventsWaiting,
-            'eventsRefuse' => $eventsRefuse
+            'eventsRefuse' => $eventsRefuse,
         ]);
     }
-
-
 }

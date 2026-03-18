@@ -19,29 +19,29 @@ class EventType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre :'
+                'label' => 'Titre :',
             ])
             ->add('typeevent', EntityType::class, [
                 'class' => TypeEvent::class,
                 'choice_label' => 'name',
-                'label' => 'Type de l\'événement :'
+                'label' => 'Type de l\'événement :',
             ])
             ->add('date', null, [
                 'widget' => 'single_text',
-                'label' => 'Date :'
+                'label' => 'Date :',
             ])
             ->add('time', null, [
                 'widget' => 'single_text',
-                'label' => 'L\'heure'
+                'label' => 'L\'heure',
             ])
-            ->add('location',TextType::class, [
-                'label' => 'Lieu :'
+            ->add('location', TextType::class, [
+                'label' => 'Lieu :',
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description : '
+                'label' => 'Description : ',
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'L\'image :'
+                'label' => 'L\'image :',
             ])
 //            ->add('organiser', EntityType::class, [
 //                'class' => User::class,
@@ -49,7 +49,7 @@ class EventType extends AbstractType
 //                'label' => 'Type de l\'événement'
 //            ])
             ->add('save', SubmitType::class, [
-                'label' => 'Valider'
+                'label' => 'Valider',
             ])
         ;
     }

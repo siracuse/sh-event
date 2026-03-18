@@ -31,8 +31,8 @@ class EventRepository extends ServiceEntityRepository
             ->setMaxResults($limit)
             ->getQuery()
             ->setHint(Paginator::HINT_ENABLE_DISTINCT, false),
-//            ->getResult(),
-        false
+            //            ->getResult(),
+            false
         );
     }
 
@@ -55,6 +55,6 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter('userId', $userId)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 }

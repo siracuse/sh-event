@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Attribute\Uploadable as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Attribute\Uploadable as Vich;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 // #[Vich\Uploadable]
@@ -35,10 +35,10 @@ class Event
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-//    propriété correspondant au nom de l'image
+    //    propriété correspondant au nom de l'image
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
-//    propriété correspondant a la data de l'image
+    //    propriété correspondant a la data de l'image
     #[Vich(mapping: 'events', fileNameProperty: 'picture')]
     // #[Assert\File(
     //     maxSize: '1024k',
@@ -48,7 +48,7 @@ class Event
     // )]
     private ?File $imageFile = null;
 
-//    propriete permettant de soumettre une image si aucun autre champ n'est renseigné, lors d'une édition par exemple
+    //    propriete permettant de soumettre une image si aucun autre champ n'est renseigné, lors d'une édition par exemple
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -59,7 +59,7 @@ class Event
     /**
      * @var Collection<int, TakePart>
      */
-    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event', cascade: ["remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: TakePart::class, mappedBy: 'event', cascade: ['remove'], orphanRemoval: true)]
     private Collection $takeParts;
 
     #[ORM\ManyToOne(inversedBy: 'events')]
@@ -172,7 +172,7 @@ class Event
     {
         $this->imageFile = $imageFile;
 
-        if(null != $imageFile) {
+        if (null != $imageFile) {
             $this->updatedAt = new \DateTimeImmutable();
         }
 
@@ -232,5 +232,4 @@ class Event
 
         return $this;
     }
-
 }

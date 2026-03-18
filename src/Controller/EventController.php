@@ -20,13 +20,13 @@ class EventController extends AbstractController
         $limit = 6;
         $events = $repository->paginateEvent($page, $limit, 'valid');
         $maxPage = ceil($events->count() / $limit);
+
         return $this->render('front/index.html.twig', [
             'events' => $events,
             'maxPages' => $maxPage,
-            'page' => $page
+            'page' => $page,
         ]);
     }
-
 
     #[Route('/event/{id}', name: 'event')]
     public function event(Event $event, TakePartRepository $repository): Response
@@ -42,10 +42,11 @@ class EventController extends AbstractController
                 }
             }
         }
+
         return $this->render('front/event.html.twig', [
             'event' => $event,
             'isAlreadyTakePart' => $isAlreadyTakePart,
-            'getAllUserByEvent' => count($getAllUserByEvent)
+            'getAllUserByEvent' => count($getAllUserByEvent),
         ]);
     }
 
@@ -53,7 +54,7 @@ class EventController extends AbstractController
     public function eventPdf(Event $event, PdfGenerator $pdfGenerator): Response
     {
         $html = $this->renderView('front/pdf/event.html.twig', [
-            'event' => $event
+            'event' => $event,
         ]);
 
         $pdf = $pdfGenerator->generate($html);
@@ -63,7 +64,7 @@ class EventController extends AbstractController
             200,
             [
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="event.pdf"'
+                'Content-Disposition' => 'attachment; filename="event.pdf"',
             ]
         );
     }

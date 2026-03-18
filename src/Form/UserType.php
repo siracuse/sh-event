@@ -17,25 +17,25 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Email : '
+                'label' => 'Email : ',
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom :'
+                'label' => 'Nom :',
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Prénom :'
+                'label' => 'Prénom :',
             ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôle :',
                 'required' => true,
                 'multiple' => true,
                 'expanded' => false,
-                'choices'  => [
-                    'User' => 'ROLE_USER'
+                'choices' => [
+                    'User' => 'ROLE_USER',
                 ],
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Valider'
+                'label' => 'Valider',
             ])
         ;
     }

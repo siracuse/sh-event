@@ -13,13 +13,14 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin/user', name: 'admin.user.')]
-#[isGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_ADMIN')]
 class AdminUserController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(UserRepository $repository): Response
     {
         $users = $repository->findAll();
+
         return $this->render('back/user/index.html.twig', [
             'users' => $users,
         ]);
@@ -33,11 +34,13 @@ class AdminUserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
             $this->addFlash('notice', "L'utilisateur a bien été modifié");
+
             return $this->redirectToRoute('admin.user.index');
         }
+
         return $this->render('back/user/edit.html.twig', [
             'form' => $form,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -47,6 +50,7 @@ class AdminUserController extends AbstractController
         $em->remove($user);
         $em->flush();
         $this->addFlash('notice', "L'utilisateura bien été supprimé");
+
         return $this->redirectToRoute('admin.user.index');
     }
 }

@@ -36,7 +36,6 @@ class TakePartRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-
     public function getAllEventByUser($userId)
     {
         return $this->createQueryBuilder('t1')
@@ -70,5 +69,4 @@ class TakePartRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 }

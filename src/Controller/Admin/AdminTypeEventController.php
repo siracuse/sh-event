@@ -13,13 +13,14 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin/typeevent', name: 'admin.typeevent.')]
-#[isGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_ADMIN')]
 class AdminTypeEventController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(TypeEventRepository $repository): Response
     {
         $typeEvents = $repository->findAll();
+
         return $this->render('back/typeevent/index.html.twig', [
             'type_events' => $typeEvents,
         ]);
@@ -35,8 +36,10 @@ class AdminTypeEventController extends AbstractController
             $em->persist($typeEvent);
             $em->flush();
             $this->addFlash('success', "Le type d'événement a bien été ajouté");
+
             return $this->redirectToRoute('admin.typeevent.index');
         }
+
         return $this->render('back/typeevent/new.html.twig', [
             'form' => $form,
         ]);
@@ -50,11 +53,13 @@ class AdminTypeEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
             $this->addFlash('success', "Le type d'événement a bien été modifié");
+
             return $this->redirectToRoute('admin.typeevent.index');
         }
+
         return $this->render('back/typeevent/edit.html.twig', [
             'form' => $form,
-            'typeevent' => $typeEvent
+            'typeevent' => $typeEvent,
         ]);
     }
 
@@ -64,6 +69,7 @@ class AdminTypeEventController extends AbstractController
         $em->remove($typeEvent);
         $em->flush();
         $this->addFlash('success', "Le type d'événement a bien été supprimé");
+
         return $this->redirectToRoute('admin.typeevent.index');
     }
 }
