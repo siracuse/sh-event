@@ -20,9 +20,10 @@ class EventController extends AbstractController
         $limit = 6;
         $events = $repository->paginateEvent($page, $limit, 'valid');
         $maxPage = ceil($events->count() / $limit);
-
+        $eventTypes = $repository->findAllTypes();
         return $this->render('front/index.html.twig', [
             'events' => $events,
+            'eventTypes' => $eventTypes,
             'maxPages' => $maxPage,
             'page' => $page,
         ]);

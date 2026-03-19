@@ -2,60 +2,76 @@
 
 {% block body %}
 
+	<div class="homepage">
+		<div class="homepage-content">
+			<h1>
+				Là où la technologie et la passion se rencontrent pour tisser des réseaux solides : c'est le carrefour de l'innovation numérique.
+			</h1>
+			<p>
+				Peu importe votre passion, la technologie, le développement, l'analyse de données, SH Event regroupe des milliers d'individus partageant vos intérêts. Des événements sont organisés quotidiennement : rejoignez-nous pour en faire l'expérience.
+			</p>
+			{% if app.user %}
+				<p class="mg-top-40">
+					<a href="{{ path('event.participation.list') }}" class="button1">Vos événements</a>
+				</p>
+			{% else %}
+				<p class="mg-top-40">
+					<a href="{{ path('app_register') }}" class="button1">Rejoindre SH Event</a>
+				</p>
+			{% endif %}
+		</div>
 
-    <div class="homepage">
-        <div class="homepage-content">
-            <h1>
-                Là où la technologie et la passion se rencontrent pour tisser des réseaux solides : c'est le carrefour de l'innovation numérique.
-            </h1>
-            <p>
-                Peu importe votre passion, la technologie, le développement, l'analyse de données, SH Event regroupe des
-                milliers d'individus partageant vos intérêts. Des événements sont
-                organisés quotidiennement : rejoignez-nous pour en faire l'expérience.
-            </p>
-            {% if app.user %}
-                <p class="mg-top-40"><a href="{{ path('event.participation.list') }}" class="button1">Vos événements</a>
-                </p>
-            {% else %}
-                <p class="mg-top-40"><a href="{{ path('app_register') }}" class="button1">Rejoindre SH Event</a></p>
-            {% endif %}
-        </div>
-
-        <div class="homepage-img">
-            <img src="{{ asset('images/meeting.png') }}" alt="">
-        </div>
-
-    </div>
+		<div class="homepage-img">
+			<img src="{{ asset('images/meeting.png') }}" alt="">
+		</div>
+	</div>
 
 
-    <div class="section-events-grid" id="shevent">
-        <h2 class="mg-bot-40">Les événements</h2>
-        <div class="events-grid">
-            {% if events %}
-                {% for event in events %}
-                    <div class="event-grid">
-                        <a href="{{ path('event', {id : event.id}) }}">
-                            <div class="event-grid-image">
-                                <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
-                            </div>
-                            <div class="event-grid-description">
-                                <p class="event-grid-title">{{ event.title }}</p>
-                                <p class="event-grid-date"><i class="fa-regular fa-calendar"></i> {{ event.date | format_datetime(pattern='dd MMMM Y', locale: 'fr')}} à {{ event.time | date('H:i') }}</p>
-                                <p>{{ event.description | striptags|slice(0, 60) ~ ' ...' }}</p>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-        <div class="mg-top-80">
-            {% if page > 1 %}
-                <a class="button1" href="{{ path('index', {page: page - 1}) }}#shevent">Page précédente</a>
-            {% endif %}
-            {% if page < maxPages %}
-                <a class="button1" href="{{ path('index', {page: page + 1}) }}#shevent">Page suivante</a>
-            {% endif %}
-        </div>
-    </div>
+	<div class="section-events-grid" id="shevent" data-controller="event-sort">
+		<h2 class="mg-bot-40">Les événements</h2>
+
+		{# Select pour filtrer par type #}
+		<div class="events-filter mg-bot-40">
+			<label for="event-type">Filtrer par type :</label>
+			<select id="event-type" data-action="change->event-sort#filter">
+				<option value="all">Tous</option>
+				{% for type in eventTypes %}
+					<option value="{{ type.name }}">{{ type.name | capitalize }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="events-grid" data-event-sort-target="list">
+			{% if events %}
+				{% for event in events %}
+					<div class="event-grid" data-type="{{ event.typeevent.name }}">
+						<a href="{{ path('event', {id : event.id}) }}">
+							<div class="event-grid-image">
+								<img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
+							</div>
+							<div class="event-grid-description">
+								<p class="event-grid-title">{{ event.title }}</p>
+								<p class="event-grid-date">
+									<i class="fa-regular fa-calendar"></i>
+									{{ event.date | format_datetime(pattern='dd MMMM Y', locale: 'fr')}}
+									à
+									{{ event.time | date('H:i') }}</p>
+								<p>{{ event.description | striptags|slice(0, 60) ~ ' ...' }}</p>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+
+		<div class="mg-top-80" data-event-sort-target="pagination">
+			{% if page > 1 %}
+				<a class="button1" href="{{ path('index', {page: page - 1}) }}#shevent">Page précédente</a>
+			{% endif %}
+			{% if page < maxPages %}
+				<a class="button1" href="{{ path('index', {page: page + 1}) }}#shevent">Page suivante</a>
+			{% endif %}
+		</div>
+	</div>
 
 {% endblock %}

@@ -57,4 +57,13 @@ class EventRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findAllTypes(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->join('e.type_event', 't')
+            ->select('DISTINCT t.id, t.name')
+            ->orderBy('t.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }
