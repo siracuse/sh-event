@@ -2,58 +2,69 @@
 
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
 
-    {{ form_errors(form) }}
+	{{ form_errors(form) }}
 
-    {{ form_start(form, {'attr': {'class': 'form-login mg-top-40'}}) }}
-    <h1>Ajout d'un événement</h1>
-    <div class="form-control">
-        {{ form_label(form.title) }}
-        {{ form_errors(form.title) }}
-        {{ form_widget(form.title) }}
-    </div>
+	{{ form_start(form, {'attr': {'class': 'form-login mg-top-40'}}) }}
+	<h1>Ajout d'un événement</h1>
+	<div class="form-control">
+		{{ form_label(form.title) }}
+		{{ form_errors(form.title) }}
+		{{ form_widget(form.title) }}
+	</div>
 
-    <div class="form-control">
-        {{ form_label(form.typeevent) }}
-        {{ form_errors(form.typeevent) }}
-        {{ form_widget(form.typeevent) }}
-    </div>
+	<div class="form-control">
+		{{ form_label(form.typeevent) }}
+		{{ form_errors(form.typeevent) }}
+		{{ form_widget(form.typeevent) }}
+	</div>
 
-    <div class="form-control">
-        {{ form_label(form.date) }}
-        {{ form_errors(form.date) }}
-        {{ form_widget(form.date) }}
-    </div>
+	<div class="form-control">
+		{{ form_label(form.date) }}
+		{{ form_errors(form.date) }}
+		{{ form_widget(form.date) }}
+	</div>
 
-    <div class="form-control">
-        {{ form_label(form.time) }}
-        {{ form_errors(form.time) }}
-        {{ form_widget(form.time) }}
-    </div>
-    <div class="form-control">
-        {{ form_label(form.location) }}
-        {{ form_errors(form.location) }}
-        {{ form_widget(form.location) }}
-    </div>
-    <div class="form-control">
-        {{ form_label(form.description) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
-    </div>
-    <div class="form-control-file">
-        {{ form_errors(form.imageFile) }}
-        {{ form_label(form.imageFile) }}
-        {{ form_widget(form.imageFile) }}
-        <p class="color-grey">
-            <strong>Taille maximale de l'image :</strong> 1 Mo<br>
-            <strong>Formats supportés :</strong> jpg et png
-        </p>
-    </div>
+	<div class="form-control">
+		{{ form_label(form.time) }}
+		{{ form_errors(form.time) }}
+		{{ form_widget(form.time) }}
+	</div>
+	<div class="form-control">
+		{{ form_label(form.location) }}
+		{{ form_errors(form.location) }}
+		{{ form_widget(form.location) }}
+	</div>
+	<div class="form-control character_counter" data-controller="character-counter" data-character-counter-max-value="1000">
+		{{ form_label(form.description) }}
+		{{ form_errors(form.description) }}
 
-    {{ form_row(form.save, {'attr' : {'class' : 'button1 login-button mg-bot-80'}}) }}
+		{{ form_widget(form.description, {
+            'attr': {
+                'maxlength': 1000,
+                'data-character-counter-target': 'input',
+                'data-action': 'input->character-counter#update'
+            }
+        }) }}
 
-    {{ form_end(form) }}
+		<div data-character-counter-target="counter">0 / 1000</div>
+	</div>
+	<div class="form-control-file">
+		{{ form_errors(form.imageFile) }}
+		{{ form_label(form.imageFile) }}
+		{{ form_widget(form.imageFile) }}
+		<p class="color-grey">
+			<strong>Taille maximale de l'image :</strong>
+			1 Mo<br>
+			<strong>Formats supportés :</strong>
+			jpg et png
+		</p>
+	</div>
+
+	{{ form_row(form.save, {'attr' : {'class' : 'button1 login-button mg-bot-80'}}) }}
+
+	{{ form_end(form) }}
 {% endblock %}

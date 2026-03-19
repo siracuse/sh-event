@@ -252,6 +252,13 @@ form .login-button {
     font-size: 16px;
 }
 
+.character_counter {
+    margin-bottom: 28px;
+}
+.character_counter textarea {
+    margin-bottom: 0;
+}
+
 /*EVENT LIST BY USER*/
 .event-by-user-right {
     display: flex;
