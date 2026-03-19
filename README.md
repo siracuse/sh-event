@@ -9,10 +9,15 @@ L'objectif de ce projet personnel était de m'entraîner sur Symfony 7, et de co
 ## 🌐 Démo
 🔗 Site en ligne : [sh-event.sh-dev.fr/](https://sh-event.sh-dev.fr/)
 
-## 🧩 Fonctionnalités principales
+## 🧩 Fonctionnalités
 - Ajouter / modifier / supprimer des événements  
 - Participer à un événement  
 - Back office pour administration des annonces et utilisateurs 
+
+- Génération d'une fiche pdf pour un événement
+- Rédaction de test unitaire/applicatif
+- fixtures
+- Pipeline CI/CD
 
 ## 🛠 Stack
 - Symfony 7.4
