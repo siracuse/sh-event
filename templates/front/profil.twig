@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div class="section min-height">
+    <h1>Mon profil</h1>
+
+    <div><b>Nom</b> : {{user.name}}</div>
+    <div><b>Adresse mail</b> : {{user.email}}</div>
+    <div><b>Chaine youtube</b> : {{user.youtube}}</div>
+    <div><b>Dépot github</b> : {{user.github}}</div>
+</div>
+
+{% endblock %}

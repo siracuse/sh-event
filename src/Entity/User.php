@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 // use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -57,6 +58,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: Event::class, mappedBy: 'organiser')]
     private Collection $events;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $youtube = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $github = null;
 
     public function __construct()
     {
@@ -231,6 +238,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $event->setOrganiser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYoutube(): ?string
+    {
+        return $this->youtube;
+    }
+
+    public function setYoutube(?string $youtube): static
+    {
+        $this->youtube = $youtube;
+
+        return $this;
+    }
+
+    public function getGithub(): ?string
+    {
+        return $this->github;
+    }
+
+    public function setGithub(?string $github): static
+    {
+        $this->github = $github;
 
         return $this;
     }

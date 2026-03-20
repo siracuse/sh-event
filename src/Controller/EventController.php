@@ -60,13 +60,6 @@ class EventController extends AbstractController
 
         $pdf = $pdfGenerator->generate($html);
 
-        return new Response(
-            $pdf,
-            200,
-            [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="event.pdf"',
-            ]
-        );
+        return new Response($pdf,200,['Content-Type' => 'application/pdf', 'Content-Disposition' => 'attachment; filename="event.pdf"',]);
     }
 }

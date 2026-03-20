@@ -32,7 +32,14 @@ class UserType extends AbstractType
                 'expanded' => false,
                 'choices' => [
                     'User' => 'ROLE_USER',
+                    'Admin' => 'ROLE_ADMIN',
                 ],
+            ])
+            ->add('youtube', TextType::class, [
+                'label' => 'Lien de votre chaine youtube :',
+            ])
+            ->add('github', TextType::class, [
+                'label' => 'Lien de votre dépot github :',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider',
