@@ -31,8 +31,8 @@
 		<h2 class="mg-bot-40">Les événements</h2>
 
 		{# Select pour filtrer par type #}
-		<div class="events-filter mg-bot-40">
-			<label for="event-type">Filtrer par type :</label>
+		<div class="events-filter mg-bot-40 form-control">
+			<label for="event-type">Type d'événement :</label>
 			<select id="event-type" data-action="change->event-sort#filter">
 				<option value="all">Tous</option>
 				{% for type in eventTypes %}

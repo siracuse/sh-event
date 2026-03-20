@@ -30,14 +30,15 @@ class RegisterEventController extends AbstractController
             $newTake_part->setRegistrationStatus('valider');
             $em->persist($newTake_part);
             $em->flush();
-
-            return $this->redirectToRoute('event', ['id' => $event->getId()]);
         }
 
-        return $this->redirectToRoute('event.participation.list');
+        // return $this->redirectToRoute('event.participation.list');
+        return $this->json([
+            'message' => 'Participation enregistrée !'
+        ]);
     }
 
-    #[Route('/event/remove_participation_event/{id}', name: 'event.participation.remove')]
+    #[Route('/remove/event/{id}', name: 'event.participation.remove')]
     public function removeParticipationEvent(Event $event, EntityManagerInterface $em, TakePartRepository $repository): Response
     {
         $user = $this->getUser();
@@ -46,7 +47,9 @@ class RegisterEventController extends AbstractController
         $em->remove($take_part);
         $em->flush();
 
-        return $this->redirectToRoute('event', ['id' => $event->getId()]);
+        return $this->json([
+            'message' => "Vous nous participez plus à l'événement"
+        ]);
     }
 
     #[Route('/myevents', name: 'event.participation.list')]

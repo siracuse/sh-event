@@ -125,6 +125,22 @@ i {
     margin-top: 80px;
 }
 
+.events-filter {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+}
+.events-filter label {
+    font-size: 16px;
+}
+.events-filter select {
+    width: 150px !important;
+    height: 37px !important;
+    margin: 0 !important;
+    font-size: 100% !important;
+}
+
 
 /*HEADER & NAVBAR*/
 header {

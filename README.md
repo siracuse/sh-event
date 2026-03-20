@@ -14,10 +14,11 @@ L'objectif de ce projet personnel était de m'entraîner sur Symfony 7, et de co
 - Participer à un événement  
 - Back office pour administration des annonces et utilisateurs 
 
+<!-- ## 🧩 Concepts Symfony utilisés dans ce projet
 - Génération d'une fiche pdf pour un événement
 - Rédaction de test unitaire/applicatif
-- fixtures
-- Pipeline CI/CD
+- Fixtures
+- Pipeline CI/CD -->
 
 ## 🛠 Stack
 - Symfony 7.4

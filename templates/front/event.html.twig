@@ -6,7 +6,7 @@
 <div class="event">
     <h2>{{ event.title }}</h2>
 
-    <div class="event-content">
+    <div class="event-content" data-controller="participation">
         <div class="event-content-right">
             <p class="mg-bot-26"><strong>Détails de l'événement : </strong></p>
             <p>
@@ -23,24 +23,29 @@
             </p>
             <p>
                 <i class="fa-regular fa-user"></i>
-                {% if getAllUserByEvent <= 1 %}
-                    Participant : {{ getAllUserByEvent }}
-                {% else %}
-                    Participants : {{ getAllUserByEvent }}
-                {% endif %}
+                Participant{{ getAllUserByEvent > 1 ? 's' : '' }} : <span data-participation-target="count">{{ getAllUserByEvent }}</span>
             </p>
 
         </div>
 
         <div class="event-content-left">
+            
             <div>
                 <img src="{{ asset('images/events/' ~ event.picture) }}" alt="">
             </div>
+
             <p class="mg-bot-40">{{ event.description | nl2br}}</p>
+            
+            <div data-participation-target="message" style="display:none;"></div>
+            
             {% if isAlreadyTakePart %}
-                <a href="{{ path('event.participation.remove', {id: event.id}) }}" class="button1">Je me désinscris</a>
+                <a href="{{ path('event.participation.remove', {id: event.id}) }}" class="button1" 
+                data-participation-target="button"
+                data-action="click->participation#unsubscribe">Je me désinscris</a>
             {% else %}
-                <a href="{{ path('event.participation.register', {id: event.id}) }}" class="button1">Participer</a>
+                <a href="{{ path('event.participation.register', {id: event.id}) }}" class="button1" 
+                data-participation-target="button"
+                data-action="click->participation#participate">Participer</a>
             {% endif %}
             {# <p> #}
                 <a class="button1" href="{{ path('event.pdf', {id: event.id}) }}">Télécharger la fiche de l'event</a>
